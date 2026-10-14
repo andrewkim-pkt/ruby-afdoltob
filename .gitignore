@@ -1,0 +1,7 @@
+*.data
+*.gcda
+*.gcov
+perf.data*
+bolt.*data
+inst/
+build/

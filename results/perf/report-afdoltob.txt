@@ -1,0 +1,723 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 3M of event 'cpu/cycles/P'
+# Event count (approx.): 11075982918803
+#
+# Overhead  Command          Shared Object         Symbol                                                         
+# ........  ...............  ....................  ...............................................................
+#
+    34.91%  ruby             ruby                  [.] vm_exec_core.lto_priv.0
+            |          
+             --34.60%--vm_exec_core.lto_priv.0
+                       |          
+                        --34.57%--rb_vm_exec
+                                  |          
+                                  |--15.08%--rb_ary_each
+                                  |          |          
+                                  |          |--14.36%--vm_call_cfunc_with_frame
+                                  |          |          vm_exec_core.lto_priv.0
+                                  |          |          rb_vm_exec
+                                  |          |          |          
+                                  |          |          |--6.18%--rb_ec_exec_node
+                                  |          |          |          ruby_run_node
+                                  |          |          |          main
+                                  |          |          |          0x7ffff7a2a8c1
+                                  |          |          |          __libc_start_main
+                                  |          |          |          _start
+                                  |          |          |          
+                                  |          |          |--3.91%--rb_ary_each
+                                  |          |          |          |          
+                                  |          |          |           --3.88%--vm_call_cfunc_with_frame
+                                  |          |          |                     vm_exec_core.lto_priv.0
+                                  |          |          |                     rb_vm_exec
+                                  |          |          |                     |          
+                                  |          |          |                     |--2.77%--rb_ec_exec_node
+                                  |          |          |                     |          ruby_run_node
+                                  |          |          |                     |          main
+                                  |          |          |                     |          0x7ffff7a2a8c1
+                                  |          |          |                     |          __libc_start_main
+                                  |          |          |                     |          _start
+                                  |          |          |                     |          
+                                  |          |          |                     |--0.62%--yield_under.lto_priv.0
+                                  |          |          |                     |          vm_call_cfunc_with_frame_
+                                  |          |          |                     |          vm_call_symbol
+                                  |          |          |                     |          vm_exec_core.lto_priv.0
+                                  |          |          |                     |          rb_vm_exec
+                                  |          |          |                     |          rb_ary_each
+                                  |          |          |                     |          vm_call_cfunc_with_frame
+                                  |          |          |                     |          vm_exec_core.lto_priv.0
+                                  |          |          |                     |          rb_vm_exec
+                                  |          |          |                     |          rb_ary_each
+                                  |          |          |                     |          vm_call_cfunc_with_frame
+                                  |          |          |                     |          vm_exec_core.lto_priv.0
+                                  |          |          |                     |          rb_vm_exec
+                                  |          |          |                     |          rb_ec_exec_node
+                                  |          |          |                     |          ruby_run_node
+                                  |          |          |                     |          main
+                                  |          |          |                     |          0x7ffff7a2a8c1
+                                  |          |          |                     |          __libc_start_main
+                                  |          |          |                     |          _start
+                                  |          |          |                     |          
+                                  |          |          |                      --0.45%--rb_ary_each
+                                  |          |          |                                |          
+                                  |          |          |                                 --0.45%--vm_call_cfunc_with_frame
+                                  |          |          |                                           vm_exec_core.lto_priv.0
+                                  |          |          |                                           rb_vm_exec
+                                  |          |          |          
+                                  |          |           --3.38%--yield_under.lto_priv.0
+                                  |          |                     vm_call_cfunc_with_frame_
+                                  |          |                     vm_call_symbol
+                                  |          |                     vm_exec_core.lto_priv.0
+                                  |          |                     rb_vm_exec
+                                  |          |                     rb_ary_each
+                                  |          |                     vm_call_cfunc_with_frame
+                                  |          |                     vm_exec_core.lto_priv.0
+                                  |          |                     rb_vm_exec
+                                  |          |                     rb_ary_each
+                                  |          |                     vm_call_cfunc_with_frame
+                                  |          |                     vm_exec_core.lto_priv.0
+                                  |          |                     rb_vm_exec
+                                  |          |                     rb_ec_exec_node
+                                  |          |                     ruby_run_node
+                                  |          |                     main
+                                  |          |                     0x7ffff7a2a8c1
+                                  |          |                     __libc_start_main
+                                  |          |                     _start
+                                  |          |          
+                                  |           --0.71%--vm_call_cfunc_other
+                                  |                     vm_exec_core.lto_priv.0
+                                  |                     rb_vm_exec
+                                  |                     |          
+                                  |                      --0.70%--send_internal.lto_priv.0
+                                  |                                vm_call_cfunc_with_frame
+                                  |                                vm_exec_core.lto_priv.0
+                                  |                                rb_vm_exec
+                                  |                                yield_under.lto_priv.0
+                                  |                                vm_call_cfunc_with_frame_
+                                  |                                vm_call_symbol
+                                  |                                vm_exec_core.lto_priv.0
+                                  |                                rb_vm_exec
+                                  |                                rb_ary_each
+                                  |                                vm_call_cfunc_with_frame
+                                  |                                vm_exec_core.lto_priv.0
+                                  |                                rb_vm_exec
+                                  |                                rb_ary_each
+                                  |                                vm_call_cfunc_with_frame
+                                  |                                vm_exec_core.lto_priv.0
+                                  |                                rb_vm_exec
+                                  |                                rb_ec_exec_node
+                                  |                                ruby_run_node
+                                  |                                main
+                                  |                                0x7ffff7a2a8c1
+                                  |                                __libc_start_main
+                                  |                                _start
+                                  |          
+                                  |--3.92%--yield_under.lto_priv.0
+                                  |          |          
+                                  |           --3.70%--vm_call_cfunc_with_frame_
+                                  |                     vm_call_symbol
+                                  |                     vm_exec_core.lto_priv.0
+                                  |                     rb_vm_exec
+                                  |                     rb_ary_each
+                                  |                     vm_call_cfunc_with_frame
+                                  |                     vm_exec_core.lto_priv.0
+                                  |                     rb_vm_exec
+                                  |                     rb_ary_each
+                                  |                     vm_call_cfunc_with_frame
+                                  |                     vm_exec_core.lto_priv.0
+                                  |                     rb_vm_exec
+                                  |                     rb_ec_exec_node
+                                  |                     ruby_run_node
+                                  |                     main
+                                  |                     0x7ffff7a2a8c1
+                                  |                     __libc_start_main
+                                  |                     _start
+                                  |          
+                                  |--3.58%--send_internal.lto_priv.0
+                                  |          vm_call_cfunc_with_frame
+                                  |          vm_exec_core.lto_priv.0
+                                  |          rb_vm_exec
+                                  |          |          
+                                  |           --3.22%--yield_under.lto_priv.0
+                                  |                     vm_call_cfunc_with_frame_
+                                  |                     vm_call_symbol
+                                  |                     vm_exec_core.lto_priv.0
+                                  |                     rb_vm_exec
+                                  |                     rb_ary_each
+                                  |                     vm_call_cfunc_with_frame
+                                  |                     vm_exec_core.lto_priv.0
+                                  |                     rb_vm_exec
+                                  |                     rb_ary_each
+                                  |                     vm_call_cfunc_with_frame
+                                  |                     vm_exec_core.lto_priv.0
+                                  |                     rb_vm_exec
+                                  |                     rb_ec_exec_node
+                                  |                     ruby_run_node
+                                  |                     main
+                                  |                     0x7ffff7a2a8c1
+                                  |                     __libc_start_main
+                                  |                     _start
+                                  |          
+                                  |--3.38%--rb_class_new_instance_pass_kw
+                                  |          |          
+                                  |          |--2.67%--vm_call_cfunc_with_frame
+                                  |          |          vm_exec_core.lto_priv.0
+                                  |          |          rb_vm_exec
+                                  |          |          |          
+                                  |          |          |--1.17%--rb_ary_each
+                                  |          |          |          |          
+                                  |          |          |           --1.16%--vm_call_cfunc_with_frame
+                                  |          |          |                     vm_exec_core.lto_priv.0
+                                  |          |          |                     rb_vm_exec
+                                  |          |          |                     |          
+                                  |          |          |                     |--0.62%--rb_ary_each
+                                  |          |          |                     |          vm_call_cfunc_with_frame
+                                  |          |          |                     |          vm_exec_core.lto_priv.0
+                                  |          |          |                     |          rb_vm_exec
+                                  |          |          |                     |          rb_ec_exec_node
+                                  |          |          |                     |          ruby_run_node
+                                  |          |          |                     |          main
+                                  |          |          |                     |          0x7ffff7a2a8c1
+                                  |          |          |                     |          __libc_start_main
+                                  |          |          |                     |          _start
+                                  |          |          |                     |          
+                                  |          |          |                      --0.45%--rb_ec_exec_node
+                                  |          |          |                                ruby_run_node
+                                  |          |          |                                main
+                                  |          |          |                                0x7ffff7a2a8c1
+                                  |          |          |                                __libc_start_main
+                                  |          |          |                                _start
+                                  |          |          |          
+                                  |          |           --0.66%--rb_yield
+                                  |          |                     rb_hash_fetch_m.lto_priv.0
+                                  |          |                     vm_call_cfunc_with_frame
+                                  |          |                     vm_exec_core.lto_priv.0
+                                  |          |                     rb_vm_exec
+                                  |          |                     |          
+                                  |          |                      --0.48%--rb_yield
+                                  |          |                                rb_hash_fetch_m.lto_priv.0
+                                  |          |                                vm_call_cfunc_with_frame
+                                  |          |                                vm_exec_core.lto_priv.0
+                                  |          |                                rb_vm_exec
+                                  |          |                                |          
+                                  |          |                                 --0.47%--send_internal.lto_priv.0
+                                  |          |                                           vm_call_cfunc_with_frame
+                                  |          |                                           vm_exec_core.lto_priv.0
+                                  |          |                                           rb_vm_exec
+                                  |          |                                           yield_under.lto_priv.0
+                                  |          |                                           vm_call_cfunc_with_frame_
+                                  |          |                                           vm_call_symbol
+                                  |          |                                           vm_exec_core.lto_priv.0
+                                  |          |                                           rb_vm_exec
+                                  |          |                                           rb_ary_each
+                                  |          |                                           vm_call_cfunc_with_frame
+                                  |          |                                           vm_exec_core.lto_priv.0
+                                  |          |                                           rb_vm_exec
+                                  |          |                                           rb_ary_each
+                                  |          |                                           vm_call_cfunc_with_frame
+                                  |          |                                           vm_exec_core.lto_priv.0
+                                  |          |                                           rb_vm_exec
+                                  |          |                                           rb_ec_exec_node
+                                  |          |                                           ruby_run_node
+                                  |          |                                           main
+                                  |          |                                           0x7ffff7a2a8c1
+                                  |          |                                           __libc_start_main
+                                  |          |                                           _start
+                                  |          |          
+                                  |           --0.50%--vm_call_cfunc_other
+                                  |                     vm_exec_core.lto_priv.0
+                                  |                     rb_vm_exec
+                                  |          
+                                  |--2.32%--rb_yield
+                                  |          |          
+                                  |           --1.87%--rb_hash_fetch_m.lto_priv.0
+                                  |                     vm_call_cfunc_with_frame
+                                  |                     vm_exec_core.lto_priv.0
+                                  |                     rb_vm_exec
+                                  |                     |          
+                                  |                     |--0.86%--rb_ary_each
+                                  |                     |          |          
+                                  |                     |           --0.78%--vm_call_cfunc_with_frame
+                                  |                     |                     vm_exec_core.lto_priv.0
+                                  |                     |                     rb_vm_exec
+                                  |                     |                     |          
+                                  |                     |                      --0.76%--rb_ary_each
+                                  |                     |                                vm_call_cfunc_with_frame
+                                  |                     |                                vm_exec_core.lto_priv.0
+                                  |                     |                                rb_vm_exec
+                                  |                     |                                rb_ec_exec_node
+                                  |                     |                                ruby_run_node
+                                  |                     |                                main
+                                  |                     |                                0x7ffff7a2a8c1
+                                  |                     |                                __libc_start_main
+                                  |                     |                                _start
+                                  |                     |          
+                                  |                      --0.70%--send_internal.lto_priv.0
+                                  |                                vm_call_cfunc_with_frame
+                                  |                                vm_exec_core.lto_priv.0
+                                  |                                rb_vm_exec
+                                  |                                |          
+                                  |                                 --0.48%--yield_under.lto_priv.0
+                                  |                                           vm_call_cfunc_with_frame_
+                                  |                                           vm_call_symbol
+                                  |                                           vm_exec_core.lto_priv.0
+                                  |                                           rb_vm_exec
+                                  |                                           rb_ary_each
+                                  |                                           vm_call_cfunc_with_frame
+                                  |                                           vm_exec_core.lto_priv.0
+                                  |                                           rb_vm_exec
+                                  |                                           rb_ary_each
+                                  |                                           vm_call_cfunc_with_frame
+                                  |                                           vm_exec_core.lto_priv.0
+                                  |                                           rb_vm_exec
+                                  |                                           rb_ec_exec_node
+                                  |                                           ruby_run_node
+                                  |                                           main
+                                  |                                           0x7ffff7a2a8c1
+                                  |                                           __libc_start_main
+                                  |                                           _start
+                                  |          
+                                  |--1.21%--each_pair_i_fast
+                                  |          |          
+                                  |           --1.21%--hash_foreach_call.lto_priv.0
+                                  |                     |          
+                                  |                      --1.16%--rb_ensure
+                                  |                                rb_hash_each_pair.lto_priv.0
+                                  |                                vm_call_cfunc_with_frame
+                                  |                                vm_exec_core.lto_priv.0
+                                  |                                rb_vm_exec
+                                  |                                |          
+                                  |                                 --0.61%--rb_ary_each
+                                  |                                           |          
+                                  |                                            --0.46%--vm_call_cfunc_with_frame
+                                  |                                                      vm_exec_core.lto_priv.0
+                                  |                                                      rb_vm_exec
+                                  |          
+                                  |--1.08%--rb_ary_collect.lto_priv.0
+                                  |          vm_call_cfunc_with_frame
+                                  |          vm_exec_core.lto_priv.0
+                                  |          rb_vm_exec
+                                  |          |          
+                                  |           --0.91%--rb_ary_each
+                                  |                     vm_call_cfunc_with_frame
+                                  |                     vm_exec_core.lto_priv.0
+                                  |                     rb_vm_exec
+                                  |                     |          
+                                  |                      --0.70%--yield_under.lto_priv.0
+                                  |                                vm_call_cfunc_with_frame_
+                                  |                                vm_call_symbol
+                                  |                                vm_exec_core.lto_priv.0
+                                  |                                rb_vm_exec
+                                  |                                rb_ary_each
+                                  |                                vm_call_cfunc_with_frame
+                                  |                                vm_exec_core.lto_priv.0
+                                  |                                rb_vm_exec
+                                  |                                rb_ary_each
+                                  |                                vm_call_cfunc_with_frame
+                                  |                                vm_exec_core.lto_priv.0
+                                  |                                rb_vm_exec
+                                  |                                rb_ec_exec_node
+                                  |                                ruby_run_node
+                                  |                                main
+                                  |                                0x7ffff7a2a8c1
+                                  |                                __libc_start_main
+                                  |                                _start
+                                  |          
+                                  |--0.78%--rb_ary_any_p
+                                  |          vm_call_cfunc_with_frame
+                                  |          vm_exec_core.lto_priv.0
+                                  |          rb_vm_exec
+                                  |          
+                                  |--0.66%--rb_yield_values2
+                                  |          |          
+                                  |           --0.64%--rb_ensure
+                                  |                     vm_call_cfunc_with_frame
+                                  |                     vm_exec_core.lto_priv.0
+                                  |                     rb_vm_exec
+                                  |                     |          
+                                  |                      --0.55%--rb_ary_each
+                                  |                                vm_call_cfunc_with_frame
+                                  |                                vm_exec_core.lto_priv.0
+                                  |                                rb_vm_exec
+                                  |          
+                                   --0.59%--catch_i
+                                             vm_catch_protect.lto_priv.0
+                                             rb_f_catch.lto_priv.0
+                                             vm_call_cfunc_with_frame
+                                             vm_exec_core.lto_priv.0
+                                             rb_vm_exec
+                                             rb_ary_each
+                                             vm_call_cfunc_with_frame
+                                             vm_exec_core.lto_priv.0
+                                             rb_vm_exec
+                                             rb_ary_each
+                                             vm_call_cfunc_with_frame
+                                             vm_exec_core.lto_priv.0
+                                             rb_vm_exec
+                                             rb_ec_exec_node
+                                             ruby_run_node
+                                             main
+                                             0x7ffff7a2a8c1
+                                             __libc_start_main
+                                             _start
+
+     4.97%  ruby             ruby                  [.] vm_call_iseq_setup_normal_0start_0params_0locals.lto_priv.0
+            |          
+             --4.95%--vm_call_iseq_setup_normal_0start_0params_0locals.lto_priv.0
+                       rb_vm_exec
+                       |          
+                       |--2.21%--rb_ary_each
+                       |          |          
+                       |           --2.17%--vm_call_cfunc_with_frame
+                       |                     vm_exec_core.lto_priv.0
+                       |                     rb_vm_exec
+                       |                     |          
+                       |                     |--0.82%--rb_ec_exec_node
+                       |                     |          ruby_run_node
+                       |                     |          main
+                       |                     |          0x7ffff7a2a8c1
+                       |                     |          __libc_start_main
+                       |                     |          _start
+                       |                     |          
+                       |                     |--0.64%--yield_under.lto_priv.0
+                       |                     |          vm_call_cfunc_with_frame_
+                       |                     |          vm_call_symbol
+                       |                     |          vm_exec_core.lto_priv.0
+                       |                     |          rb_vm_exec
+                       |                     |          rb_ary_each
+                       |                     |          vm_call_cfunc_with_frame
+                       |                     |          vm_exec_core.lto_priv.0
+                       |                     |          rb_vm_exec
+                       |                     |          rb_ary_each
+                       |                     |          vm_call_cfunc_with_frame
+                       |                     |          vm_exec_core.lto_priv.0
+                       |                     |          rb_vm_exec
+                       |                     |          rb_ec_exec_node
+                       |                     |          ruby_run_node
+                       |                     |          main
+                       |                     |          0x7ffff7a2a8c1
+                       |                     |          __libc_start_main
+                       |                     |          _start
+                       |                     |          
+                       |                      --0.53%--rb_ary_each
+                       |                                vm_call_cfunc_with_frame
+                       |                                vm_exec_core.lto_priv.0
+                       |                                rb_vm_exec
+                       |                                |          
+                       |                                 --0.43%--rb_ec_exec_node
+                       |                                           ruby_run_node
+                       |                                           main
+                       |                                           0x7ffff7a2a8c1
+                       |                                           __libc_start_main
+                       |                                           _start
+                       |          
+                       |--0.58%--yield_under.lto_priv.0
+                       |          |          
+                       |           --0.47%--vm_call_cfunc_with_frame_
+                       |                     vm_call_symbol
+                       |                     vm_exec_core.lto_priv.0
+                       |                     rb_vm_exec
+                       |                     rb_ary_each
+                       |                     vm_call_cfunc_with_frame
+                       |                     vm_exec_core.lto_priv.0
+                       |                     rb_vm_exec
+                       |                     rb_ary_each
+                       |                     vm_call_cfunc_with_frame
+                       |                     vm_exec_core.lto_priv.0
+                       |                     rb_vm_exec
+                       |                     rb_ec_exec_node
+                       |                     ruby_run_node
+                       |                     main
+                       |                     0x7ffff7a2a8c1
+                       |                     __libc_start_main
+                       |                     _start
+                       |          
+                       |--0.49%--send_internal.lto_priv.0
+                       |          vm_call_cfunc_with_frame
+                       |          vm_exec_core.lto_priv.0
+                       |          rb_vm_exec
+                       |          |          
+                       |           --0.48%--yield_under.lto_priv.0
+                       |                     vm_call_cfunc_with_frame_
+                       |                     vm_call_symbol
+                       |                     vm_exec_core.lto_priv.0
+                       |                     rb_vm_exec
+                       |                     rb_ary_each
+                       |                     vm_call_cfunc_with_frame
+                       |                     vm_exec_core.lto_priv.0
+                       |                     rb_vm_exec
+                       |                     rb_ary_each
+                       |                     vm_call_cfunc_with_frame
+                       |                     vm_exec_core.lto_priv.0
+                       |                     rb_vm_exec
+                       |                     rb_ec_exec_node
+                       |                     ruby_run_node
+                       |                     main
+                       |                     0x7ffff7a2a8c1
+                       |                     __libc_start_main
+                       |                     _start
+                       |          
+                        --0.43%--rb_class_new_instance_pass_kw
+
+     3.14%  ruby             ruby                  [.] vm_call_iseq_setup_normal_0start_1params_1locals.lto_priv.0
+            |          
+             --3.12%--vm_call_iseq_setup_normal_0start_1params_1locals.lto_priv.0
+                       rb_vm_exec
+                       |          
+                        --1.40%--rb_ary_each
+                                  |          
+                                   --1.37%--vm_call_cfunc_with_frame
+                                             vm_exec_core.lto_priv.0
+                                             rb_vm_exec
+                                             |          
+                                              --0.73%--rb_ec_exec_node
+                                                        ruby_run_node
+                                                        main
+                                                        0x7ffff7a2a8c1
+                                                        __libc_start_main
+                                                        _start
+
+     2.74%  ruby             ruby                  [.] rb_vm_opt_getconstant_path
+            |          
+             --2.71%--rb_vm_opt_getconstant_path
+                       |          
+                        --2.69%--vm_exec_core.lto_priv.0
+                                  rb_vm_exec
+                                  |          
+                                   --1.25%--rb_ary_each
+                                             |          
+                                              --1.24%--vm_call_cfunc_with_frame
+                                                        vm_exec_core.lto_priv.0
+                                                        rb_vm_exec
+                                                        |          
+                                                         --0.72%--rb_ec_exec_node
+                                                                   ruby_run_node
+                                                                   main
+                                                                   0x7ffff7a2a8c1
+                                                                   __libc_start_main
+                                                                   _start
+
+     2.25%  ruby             ruby                  [.] vm_search_cc.lto_priv.0
+            |          
+             --2.25%--vm_search_cc.lto_priv.0
+                       |          
+                        --1.70%--vm_exec_core.lto_priv.0
+                                  rb_vm_exec
+                                  |          
+                                   --0.50%--rb_ary_each
+                                             |          
+                                              --0.48%--vm_call_cfunc_with_frame
+                                                        vm_exec_core.lto_priv.0
+                                                        rb_vm_exec
+
+     2.12%  ruby             ruby                  [.] vm_call_cfunc_with_frame
+            |          
+             --2.01%--vm_call_cfunc_with_frame
+                       |          
+                        --1.93%--vm_exec_core.lto_priv.0
+                                  rb_vm_exec
+                                  |          
+                                   --0.83%--rb_ary_each
+                                             |          
+                                              --0.78%--vm_call_cfunc_with_frame
+                                                        vm_exec_core.lto_priv.0
+                                                        rb_vm_exec
+
+     1.48%  ruby             ruby                  [.] gc_sweep_step.lto_priv.0
+            |          
+             --1.47%--gc_sweep_step.lto_priv.0
+                       |          
+                       |--1.00%--gc_continue
+                       |          newobj_cache_miss.lto_priv.0
+                       |          
+                        --0.46%--gc_sweep.lto_priv.0
+                                  |          
+                                   --0.45%--gc_start.isra.0
+                                             newobj_cache_miss.lto_priv.0
+
+     1.48%  ruby             ruby                  [.] vm_call_iseq_setup.lto_priv.0
+            |          
+             --1.47%--vm_call_iseq_setup.lto_priv.0
+                       |          
+                        --1.35%--vm_exec_core.lto_priv.0
+                                  rb_vm_exec
+                                  |          
+                                   --0.65%--rb_ary_each
+                                             |          
+                                              --0.62%--vm_call_cfunc_with_frame
+                                                        vm_exec_core.lto_priv.0
+                                                        rb_vm_exec
+
+     1.30%  ruby             ruby                  [.] rb_class_new_instance_pass_kw
+            |          
+             --1.29%--rb_class_new_instance_pass_kw
+                       |          
+                        --1.11%--vm_call_cfunc_with_frame
+                                  vm_exec_core.lto_priv.0
+                                  rb_vm_exec
+                                  |          
+                                   --0.45%--rb_ary_each
+                                             |          
+                                              --0.45%--vm_call_cfunc_with_frame
+                                                        vm_exec_core.lto_priv.0
+                                                        rb_vm_exec
+
+     1.27%  ruby             ruby                  [.] match_at.lto_priv.0
+            |          
+             --1.24%--match_at.lto_priv.0
+                       |          
+                        --1.22%--onig_search_gpos
+                                  |          
+                                   --0.78%--rb_reg_search_set_match.lto_priv.0
+
+     1.09%  ruby             ruby                  [.] invoke_block_from_c_bh.lto_priv.0
+            |          
+             --1.07%--invoke_block_from_c_bh.lto_priv.0
+
+     1.04%  ruby             ruby                  [.] vm_call0_body.lto_priv.0
+            |          
+             --1.02%--vm_call0_body.lto_priv.0
+                       |          
+                        --0.68%--rb_class_new_instance_pass_kw
+                                  |          
+                                   --0.59%--vm_call_cfunc_with_frame
+                                             vm_exec_core.lto_priv.0
+                                             rb_vm_exec
+
+     1.03%  ruby             ruby                  [.] vm_search_super_method.lto_priv.0
+            |          
+             --1.03%--vm_search_super_method.lto_priv.0
+                       |          
+                        --1.02%--vm_exec_core.lto_priv.0
+                                  rb_vm_exec
+
+     0.94%  ruby             ruby                  [.] rb_hash_aref
+            |          
+             --0.90%--rb_hash_aref
+                       |          
+                        --0.72%--vm_exec_core.lto_priv.0
+                                  rb_vm_exec
+
+     0.93%  ruby             ruby                  [.] vm_call_iseq_setup_normal_opt_start
+            |          
+             --0.93%--vm_call_iseq_setup_normal_opt_start
+                       |          
+                        --0.91%--vm_exec_core.lto_priv.0
+                                  rb_vm_exec
+                                  |          
+                                   --0.41%--rb_ary_each
+
+     0.76%  ruby             ruby                  [.] vm_call_ivar
+            |          
+             --0.75%--vm_call_ivar
+                       |          
+                        --0.70%--vm_exec_core.lto_priv.0
+                                  rb_vm_exec
+
+     0.71%  ruby             libc.so.6             [.] malloc_usable_size
+            |          
+             --0.71%--malloc_usable_size
+                       |          
+                        --0.57%--rb_gc_obj_free
+                                  gc_sweep_step.lto_priv.0
+                                  |          
+                                   --0.51%--gc_continue
+                                             newobj_cache_miss.lto_priv.0
+
+     0.65%  ruby             ruby                  [.] vm_call_iseq_setup_normal_0start_1params_2locals.lto_priv.0
+            |          
+             --0.65%--vm_call_iseq_setup_normal_0start_1params_2locals.lto_priv.0
+                       rb_vm_exec
+
+     0.64%  ruby             ruby                  [.] obj_respond_to.lto_priv.0
+            |          
+             --0.63%--obj_respond_to.lto_priv.0
+                       |          
+                        --0.61%--vm_call_cfunc_with_frame
+                                  vm_exec_core.lto_priv.0
+                                  rb_vm_exec
+
+     0.63%  ruby             ruby                  [.] setup_parameters_complex.lto_priv.0
+            |          
+             --0.62%--setup_parameters_complex.lto_priv.0
+                       |          
+                        --0.57%--vm_callee_setup_arg.lto_priv.0
+                                  |          
+                                   --0.50%--vm_call_iseq_setup.lto_priv.0
+                                             |          
+                                              --0.44%--vm_exec_core.lto_priv.0
+                                                        rb_vm_exec
+
+     0.60%  ruby             ruby                  [.] vm_call_iseq_setup_normal_0start_2params_2locals.lto_priv.0
+            |          
+             --0.60%--vm_call_iseq_setup_normal_0start_2params_2locals.lto_priv.0
+                       rb_vm_exec
+
+     0.47%  ruby             libc.so.6             [.] malloc
+            |          
+             --0.46%--malloc
+
+     0.47%  ruby             ruby                  [.] vm_call_iseq_setup_normal_0start_0params_1locals.lto_priv.0
+            |          
+             --0.47%--vm_call_iseq_setup_normal_0start_0params_1locals.lto_priv.0
+                       rb_vm_exec
+
+     0.45%  ruby             ruby                  [.] str_enc_new.lto_priv.0
+            |          
+             --0.45%--str_enc_new.lto_priv.0
+
+     0.43%  ruby             ruby                  [.] rb_gc_writebarrier
+            |          
+             --0.41%--rb_gc_writebarrier
+
+     0.43%  ruby             ruby                  [.] vm_call_iseq_bmethod
+            |          
+             --0.43%--vm_call_iseq_bmethod
+                       |          
+                        --0.40%--vm_exec_core.lto_priv.0
+                                  rb_vm_exec
+
+     0.43%  ruby             sha2.so               [.] rb_Digest_SHA256_Transform
+            |          
+             --0.43%--rb_Digest_SHA256_Transform
+                       |          
+                        --0.40%--rb_Digest_SHA256_Update
+                                  rb_Digest_SHA256_Update
+                                  rb_digest_base_update
+                                  vm_call_cfunc_with_frame
+                                  vm_exec_core.lto_priv.0
+                                  rb_vm_exec
+                                  rb_ary_each
+                                  vm_call_cfunc_with_frame
+                                  vm_exec_core.lto_priv.0
+                                  rb_vm_exec
+                                  rb_ary_each
+                                  vm_call_cfunc_with_frame
+                                  vm_exec_core.lto_priv.0
+                                  rb_vm_exec
+                                  rb_ec_exec_node
+                                  ruby_run_node
+                                  main
+                                  0x7ffff7a2a8c1
+                                  __libc_start_main
+                                  _start
+
+     0.42%  ruby             ruby                  [.] ar_lookup.lto_priv.0
+     0.41%  ruby             ruby                  [.] vm_call_method_each_type
+            |          
+             --0.41%--vm_call_method_each_type
+
+     0.41%  ruby             ruby                  [.] rb_str_hash
+     0.41%  ruby             ruby                  [.] vm_call_iseq_forwardable
+            |          
+             --0.41%--vm_call_iseq_forwardable
+
+     0.40%  ruby             libc.so.6             [.] cfree
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#

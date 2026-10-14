@@ -1,0 +1,928 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 3M of event 'cpu/cycles/P'
+# Event count (approx.): 11069887313514
+#
+# Overhead  Command          Shared Object         Symbol                                              
+# ........  ...............  ....................  ....................................................
+#
+    31.90%  ruby             ruby                  [.] vm_exec_core
+            |          
+            |--18.46%--vm_exec_core
+            |          |          
+            |          |--15.07%--rb_vm_exec
+            |          |          |          
+            |          |          |--8.38%--rb_yield
+            |          |          |          |          
+            |          |          |          |--6.53%--RB_FL_TEST_RAW (inlined)
+            |          |          |          |          RB_FL_ANY_RAW (inlined)
+            |          |          |          |          rb_array_len (inlined)
+            |          |          |          |          |          
+            |          |          |          |          |--5.92%--rb_ary_each
+            |          |          |          |          |          vm_call_cfunc_with_frame_ (inlined)
+            |          |          |          |          |          |          
+            |          |          |          |          |          |--5.49%--vm_call_cfunc_with_frame
+            |          |          |          |          |          |          vm_sendish (inlined)
+            |          |          |          |          |          |          vm_exec_core
+            |          |          |          |          |          |          |          
+            |          |          |          |          |          |          |--3.94%--rb_vm_exec
+            |          |          |          |          |          |          |          |          
+            |          |          |          |          |          |          |          |--1.94%--rb_yield
+            |          |          |          |          |          |          |          |          RB_FL_TEST_RAW (inlined)
+            |          |          |          |          |          |          |          |          RB_FL_ANY_RAW (inlined)
+            |          |          |          |          |          |          |          |          rb_array_len (inlined)
+            |          |          |          |          |          |          |          |          rb_ary_each
+            |          |          |          |          |          |          |          |          vm_call_cfunc_with_frame_ (inlined)
+            |          |          |          |          |          |          |          |          |          
+            |          |          |          |          |          |          |          |           --1.92%--vm_call_cfunc_with_frame
+            |          |          |          |          |          |          |          |                     vm_sendish (inlined)
+            |          |          |          |          |          |          |          |                     vm_exec_core
+            |          |          |          |          |          |          |          |                     |          
+            |          |          |          |          |          |          |          |                      --1.56%--vm_exec_loop (inlined)
+            |          |          |          |          |          |          |          |                                rb_vm_exec
+            |          |          |          |          |          |          |          |                                |          
+            |          |          |          |          |          |          |          |                                 --1.34%--rb_ec_exec_node
+            |          |          |          |          |          |          |          |                                           ruby_run_node
+            |          |          |          |          |          |          |          |                                           main
+            |          |          |          |          |          |          |          |                                           0x7ffff7a2a8c1
+            |          |          |          |          |          |          |          |                                           __libc_start_main
+            |          |          |          |          |          |          |          |                                           _start
+            |          |          |          |          |          |          |          |          
+            |          |          |          |          |          |          |           --1.58%--yield_under
+            |          |          |          |          |          |          |                     vm_call_cfunc_with_frame_
+            |          |          |          |          |          |          |                     vm_call_symbol
+            |          |          |          |          |          |          |                     vm_sendish (inlined)
+            |          |          |          |          |          |          |                     vm_exec_core
+            |          |          |          |          |          |          |                     rb_vm_exec
+            |          |          |          |          |          |          |                     rb_yield
+            |          |          |          |          |          |          |                     RB_FL_TEST_RAW (inlined)
+            |          |          |          |          |          |          |                     RB_FL_ANY_RAW (inlined)
+            |          |          |          |          |          |          |                     rb_array_len (inlined)
+            |          |          |          |          |          |          |                     rb_ary_each
+            |          |          |          |          |          |          |                     vm_call_cfunc_with_frame_ (inlined)
+            |          |          |          |          |          |          |                     vm_call_cfunc_with_frame
+            |          |          |          |          |          |          |                     vm_sendish (inlined)
+            |          |          |          |          |          |          |                     vm_exec_core
+            |          |          |          |          |          |          |                     rb_vm_exec
+            |          |          |          |          |          |          |                     rb_yield
+            |          |          |          |          |          |          |                     RB_FL_TEST_RAW (inlined)
+            |          |          |          |          |          |          |                     RB_FL_ANY_RAW (inlined)
+            |          |          |          |          |          |          |                     rb_array_len (inlined)
+            |          |          |          |          |          |          |                     rb_ary_each
+            |          |          |          |          |          |          |                     vm_call_cfunc_with_frame_ (inlined)
+            |          |          |          |          |          |          |                     vm_call_cfunc_with_frame
+            |          |          |          |          |          |          |                     vm_sendish (inlined)
+            |          |          |          |          |          |          |                     vm_exec_core
+            |          |          |          |          |          |          |                     vm_exec_loop (inlined)
+            |          |          |          |          |          |          |                     rb_vm_exec
+            |          |          |          |          |          |          |                     rb_ec_exec_node
+            |          |          |          |          |          |          |                     ruby_run_node
+            |          |          |          |          |          |          |                     main
+            |          |          |          |          |          |          |                     0x7ffff7a2a8c1
+            |          |          |          |          |          |          |                     __libc_start_main
+            |          |          |          |          |          |          |                     _start
+            |          |          |          |          |          |          |          
+            |          |          |          |          |          |           --1.55%--vm_exec_loop (inlined)
+            |          |          |          |          |          |                     rb_vm_exec
+            |          |          |          |          |          |                     |          
+            |          |          |          |          |          |                      --1.40%--rb_ec_exec_node
+            |          |          |          |          |          |                                ruby_run_node
+            |          |          |          |          |          |                                main
+            |          |          |          |          |          |                                0x7ffff7a2a8c1
+            |          |          |          |          |          |                                __libc_start_main
+            |          |          |          |          |          |                                _start
+            |          |          |          |          |          |          
+            |          |          |          |          |           --0.43%--vm_sendish (inlined)
+            |          |          |          |          |                     vm_exec_core
+            |          |          |          |          |                     rb_vm_exec
+            |          |          |          |          |                     vm_call0_cc
+            |          |          |          |          |                     rb_call0
+            |          |          |          |          |                     |          
+            |          |          |          |          |                      --0.41%--send_internal
+            |          |          |          |          |                                vm_call_cfunc_with_frame_ (inlined)
+            |          |          |          |          |                                vm_call_cfunc_with_frame
+            |          |          |          |          |                                vm_sendish (inlined)
+            |          |          |          |          |                                vm_exec_core
+            |          |          |          |          |                                vm_exec_loop (inlined)
+            |          |          |          |          |                                rb_vm_exec
+            |          |          |          |          |                                yield_under
+            |          |          |          |          |                                vm_call_cfunc_with_frame_
+            |          |          |          |          |                                vm_call_symbol
+            |          |          |          |          |                                vm_sendish (inlined)
+            |          |          |          |          |                                vm_exec_core
+            |          |          |          |          |                                rb_vm_exec
+            |          |          |          |          |                                rb_yield
+            |          |          |          |          |                                RB_FL_TEST_RAW (inlined)
+            |          |          |          |          |                                RB_FL_ANY_RAW (inlined)
+            |          |          |          |          |                                rb_array_len (inlined)
+            |          |          |          |          |                                rb_ary_each
+            |          |          |          |          |                                vm_call_cfunc_with_frame_ (inlined)
+            |          |          |          |          |                                vm_call_cfunc_with_frame
+            |          |          |          |          |                                vm_sendish (inlined)
+            |          |          |          |          |                                vm_exec_core
+            |          |          |          |          |                                rb_vm_exec
+            |          |          |          |          |                                rb_yield
+            |          |          |          |          |                                RB_FL_TEST_RAW (inlined)
+            |          |          |          |          |                                RB_FL_ANY_RAW (inlined)
+            |          |          |          |          |                                rb_array_len (inlined)
+            |          |          |          |          |                                rb_ary_each
+            |          |          |          |          |                                vm_call_cfunc_with_frame_ (inlined)
+            |          |          |          |          |                                vm_call_cfunc_with_frame
+            |          |          |          |          |                                vm_sendish (inlined)
+            |          |          |          |          |                                vm_exec_core
+            |          |          |          |          |                                vm_exec_loop (inlined)
+            |          |          |          |          |                                rb_vm_exec
+            |          |          |          |          |                                rb_ec_exec_node
+            |          |          |          |          |                                ruby_run_node
+            |          |          |          |          |                                main
+            |          |          |          |          |                                0x7ffff7a2a8c1
+            |          |          |          |          |                                __libc_start_main
+            |          |          |          |          |                                _start
+            |          |          |          |          |          
+            |          |          |          |           --0.60%--rb_ary_push (inlined)
+            |          |          |          |                     rb_ary_collect
+            |          |          |          |                     vm_call_cfunc_with_frame_ (inlined)
+            |          |          |          |                     vm_call_cfunc_with_frame
+            |          |          |          |                     vm_sendish (inlined)
+            |          |          |          |                     vm_exec_core
+            |          |          |          |                     |          
+            |          |          |          |                      --0.59%--rb_vm_exec
+            |          |          |          |                                |          
+            |          |          |          |                                 --0.49%--rb_yield
+            |          |          |          |                                           RB_FL_TEST_RAW (inlined)
+            |          |          |          |                                           RB_FL_ANY_RAW (inlined)
+            |          |          |          |                                           rb_array_len (inlined)
+            |          |          |          |                                           rb_ary_each
+            |          |          |          |                                           vm_call_cfunc_with_frame_ (inlined)
+            |          |          |          |                                           vm_call_cfunc_with_frame
+            |          |          |          |                                           vm_sendish (inlined)
+            |          |          |          |                                           vm_exec_core
+            |          |          |          |                                           |          
+            |          |          |          |                                            --0.42%--rb_vm_exec
+            |          |          |          |          
+            |          |          |           --1.00%--rb_hash_fetch_m
+            |          |          |                     vm_call_cfunc_with_frame_ (inlined)
+            |          |          |                     vm_call_cfunc_with_frame
+            |          |          |                     vm_sendish (inlined)
+            |          |          |                     vm_exec_core
+            |          |          |                     |          
+            |          |          |                      --0.99%--rb_vm_exec
+            |          |          |                                |          
+            |          |          |                                 --0.60%--rb_yield
+            |          |          |                                           |          
+            |          |          |                                            --0.45%--RB_FL_TEST_RAW (inlined)
+            |          |          |                                                      RB_FL_ANY_RAW (inlined)
+            |          |          |                                                      rb_array_len (inlined)
+            |          |          |                                                      rb_ary_each
+            |          |          |                                                      vm_call_cfunc_with_frame_ (inlined)
+            |          |          |                                                      |          
+            |          |          |                                                       --0.41%--vm_call_cfunc_with_frame
+            |          |          |                                                                 vm_sendish (inlined)
+            |          |          |                                                                 vm_exec_core
+            |          |          |                                                                 rb_vm_exec
+            |          |          |                                                                 rb_yield
+            |          |          |                                                                 RB_FL_TEST_RAW (inlined)
+            |          |          |                                                                 RB_FL_ANY_RAW (inlined)
+            |          |          |                                                                 rb_array_len (inlined)
+            |          |          |                                                                 rb_ary_each
+            |          |          |                                                                 vm_call_cfunc_with_frame_ (inlined)
+            |          |          |                                                                 vm_call_cfunc_with_frame
+            |          |          |                                                                 vm_sendish (inlined)
+            |          |          |                                                                 vm_exec_core
+            |          |          |                                                                 vm_exec_loop (inlined)
+            |          |          |                                                                 rb_vm_exec
+            |          |          |                                                                 rb_ec_exec_node
+            |          |          |                                                                 ruby_run_node
+            |          |          |                                                                 main
+            |          |          |                                                                 0x7ffff7a2a8c1
+            |          |          |                                                                 __libc_start_main
+            |          |          |                                                                 _start
+            |          |          |          
+            |          |          |--4.19%--vm_call0_cc
+            |          |          |          |          
+            |          |          |           --4.18%--rb_call0
+            |          |          |                     |          
+            |          |          |                     |--2.28%--rb_funcallv_kw
+            |          |          |                     |          rb_class_new_instance_pass_kw
+            |          |          |                     |          vm_call_cfunc_with_frame_ (inlined)
+            |          |          |                     |          |          
+            |          |          |                     |          |--1.81%--vm_call_cfunc_with_frame
+            |          |          |                     |          |          vm_sendish (inlined)
+            |          |          |                     |          |          vm_exec_core
+            |          |          |                     |          |          |          
+            |          |          |                     |          |           --1.45%--rb_vm_exec
+            |          |          |                     |          |                     |          
+            |          |          |                     |          |                      --1.08%--rb_yield
+            |          |          |                     |          |                                |          
+            |          |          |                     |          |                                 --0.71%--RB_FL_TEST_RAW (inlined)
+            |          |          |                     |          |                                           RB_FL_ANY_RAW (inlined)
+            |          |          |                     |          |                                           rb_array_len (inlined)
+            |          |          |                     |          |                                           |          
+            |          |          |                     |          |                                            --0.66%--rb_ary_each
+            |          |          |                     |          |                                                      vm_call_cfunc_with_frame_ (inlined)
+            |          |          |                     |          |                                                      |          
+            |          |          |                     |          |                                                       --0.65%--vm_call_cfunc_with_frame
+            |          |          |                     |          |                                                                 vm_sendish (inlined)
+            |          |          |                     |          |                                                                 vm_exec_core
+            |          |          |                     |          |                                                                 |          
+            |          |          |                     |          |                                                                  --0.46%--rb_vm_exec
+            |          |          |                     |          |                                                                            |          
+            |          |          |                     |          |                                                                             --0.42%--rb_yield
+            |          |          |                     |          |                                                                                       RB_FL_TEST_RAW (inlined)
+            |          |          |                     |          |                                                                                       RB_FL_ANY_RAW (inlined)
+            |          |          |                     |          |                                                                                       rb_array_len (inlined)
+            |          |          |                     |          |                                                                                       rb_ary_each
+            |          |          |                     |          |                                                                                       vm_call_cfunc_with_frame_ (inlined)
+            |          |          |                     |          |                                                                                       vm_call_cfunc_with_frame
+            |          |          |                     |          |                                                                                       vm_sendish (inlined)
+            |          |          |                     |          |                                                                                       vm_exec_core
+            |          |          |                     |          |                                                                                       vm_exec_loop (inlined)
+            |          |          |                     |          |                                                                                       rb_vm_exec
+            |          |          |                     |          |                                                                                       rb_ec_exec_node
+            |          |          |                     |          |                                                                                       ruby_run_node
+            |          |          |                     |          |                                                                                       main
+            |          |          |                     |          |                                                                                       0x7ffff7a2a8c1
+            |          |          |                     |          |                                                                                       __libc_start_main
+            |          |          |                     |          |                                                                                       _start
+            |          |          |                     |          |          
+            |          |          |                     |           --0.47%--vm_sendish (inlined)
+            |          |          |                     |                     vm_exec_core
+            |          |          |                     |                     rb_vm_exec
+            |          |          |                     |          
+            |          |          |                      --1.81%--send_internal
+            |          |          |                                vm_call_cfunc_with_frame_ (inlined)
+            |          |          |                                vm_call_cfunc_with_frame
+            |          |          |                                vm_sendish (inlined)
+            |          |          |                                vm_exec_core
+            |          |          |                                |          
+            |          |          |                                 --1.68%--vm_exec_loop (inlined)
+            |          |          |                                           rb_vm_exec
+            |          |          |                                           yield_under
+            |          |          |                                           vm_call_cfunc_with_frame_
+            |          |          |                                           vm_call_symbol
+            |          |          |                                           vm_sendish (inlined)
+            |          |          |                                           vm_exec_core
+            |          |          |                                           rb_vm_exec
+            |          |          |                                           rb_yield
+            |          |          |                                           RB_FL_TEST_RAW (inlined)
+            |          |          |                                           RB_FL_ANY_RAW (inlined)
+            |          |          |                                           rb_array_len (inlined)
+            |          |          |                                           rb_ary_each
+            |          |          |                                           vm_call_cfunc_with_frame_ (inlined)
+            |          |          |                                           vm_call_cfunc_with_frame
+            |          |          |                                           vm_sendish (inlined)
+            |          |          |                                           vm_exec_core
+            |          |          |                                           rb_vm_exec
+            |          |          |                                           rb_yield
+            |          |          |                                           RB_FL_TEST_RAW (inlined)
+            |          |          |                                           RB_FL_ANY_RAW (inlined)
+            |          |          |                                           rb_array_len (inlined)
+            |          |          |                                           rb_ary_each
+            |          |          |                                           vm_call_cfunc_with_frame_ (inlined)
+            |          |          |                                           vm_call_cfunc_with_frame
+            |          |          |                                           vm_sendish (inlined)
+            |          |          |                                           vm_exec_core
+            |          |          |                                           vm_exec_loop (inlined)
+            |          |          |                                           rb_vm_exec
+            |          |          |                                           rb_ec_exec_node
+            |          |          |                                           ruby_run_node
+            |          |          |                                           main
+            |          |          |                                           0x7ffff7a2a8c1
+            |          |          |                                           __libc_start_main
+            |          |          |                                           _start
+            |          |          |          
+            |          |          |--1.29%--rb_yield_values2
+            |          |          |          |          
+            |          |          |           --0.75%--each_pair_i_fast
+            |          |          |                     RB_FL_TEST_RAW (inlined)
+            |          |          |                     RHASH_AR_TABLE_P (inlined)
+            |          |          |                     ensure_ar_table (inlined)
+            |          |          |                     ar_foreach_check (inlined)
+            |          |          |                     hash_foreach_call
+            |          |          |                     |          
+            |          |          |                      --0.73%--rb_ensure
+            |          |          |                                rb_hash_foreach
+            |          |          |                                rb_hash_each_pair
+            |          |          |                                vm_call_cfunc_with_frame_ (inlined)
+            |          |          |                                vm_call_cfunc_with_frame
+            |          |          |                                vm_sendish (inlined)
+            |          |          |                                vm_exec_core
+            |          |          |                                |          
+            |          |          |                                 --0.57%--rb_vm_exec
+            |          |          |          
+            |          |           --0.40%--yield_under
+            |          |                     vm_call_cfunc_with_frame_
+            |          |          
+            |           --3.37%--vm_exec_loop (inlined)
+            |                     rb_vm_exec
+            |                     |          
+            |                     |--1.66%--rb_yield
+            |                     |          RB_FL_TEST_RAW (inlined)
+            |                     |          RB_FL_ANY_RAW (inlined)
+            |                     |          rb_array_len (inlined)
+            |                     |          rb_ary_each
+            |                     |          vm_call_cfunc_with_frame_ (inlined)
+            |                     |          vm_call_cfunc_with_frame
+            |                     |          vm_sendish (inlined)
+            |                     |          vm_exec_core
+            |                     |          |          
+            |                     |           --1.66%--vm_exec_loop (inlined)
+            |                     |                     rb_vm_exec
+            |                     |                     rb_ec_exec_node
+            |                     |                     ruby_run_node
+            |                     |                     main
+            |                     |                     0x7ffff7a2a8c1
+            |                     |                     __libc_start_main
+            |                     |                     _start
+            |                     |          
+            |                      --1.61%--yield_under
+            |                                vm_call_cfunc_with_frame_
+            |                                vm_call_symbol
+            |                                vm_sendish (inlined)
+            |                                vm_exec_core
+            |                                rb_vm_exec
+            |                                rb_yield
+            |                                RB_FL_TEST_RAW (inlined)
+            |                                RB_FL_ANY_RAW (inlined)
+            |                                rb_array_len (inlined)
+            |                                rb_ary_each
+            |                                vm_call_cfunc_with_frame_ (inlined)
+            |                                vm_call_cfunc_with_frame
+            |                                vm_sendish (inlined)
+            |                                vm_exec_core
+            |                                rb_vm_exec
+            |                                rb_yield
+            |                                RB_FL_TEST_RAW (inlined)
+            |                                RB_FL_ANY_RAW (inlined)
+            |                                rb_array_len (inlined)
+            |                                rb_ary_each
+            |                                vm_call_cfunc_with_frame_ (inlined)
+            |                                vm_call_cfunc_with_frame
+            |                                vm_sendish (inlined)
+            |                                vm_exec_core
+            |                                vm_exec_loop (inlined)
+            |                                rb_vm_exec
+            |                                rb_ec_exec_node
+            |                                ruby_run_node
+            |                                main
+            |                                0x7ffff7a2a8c1
+            |                                __libc_start_main
+            |                                _start
+            |          
+            |--6.72%--vm_search_method_fastpath (inlined)
+            |          |          
+            |           --6.53%--vm_sendish (inlined)
+            |                     vm_exec_core
+            |                     |          
+            |                     |--5.21%--rb_vm_exec
+            |                     |          |          
+            |                     |          |--3.27%--rb_yield
+            |                     |          |          |          
+            |                     |          |           --2.62%--RB_FL_TEST_RAW (inlined)
+            |                     |          |                     RB_FL_ANY_RAW (inlined)
+            |                     |          |                     rb_array_len (inlined)
+            |                     |          |                     |          
+            |                     |          |                      --2.43%--rb_ary_each
+            |                     |          |                                vm_call_cfunc_with_frame_ (inlined)
+            |                     |          |                                |          
+            |                     |          |                                 --2.36%--vm_call_cfunc_with_frame
+            |                     |          |                                           vm_sendish (inlined)
+            |                     |          |                                           vm_exec_core
+            |                     |          |                                           |          
+            |                     |          |                                           |--1.66%--rb_vm_exec
+            |                     |          |                                           |          |          
+            |                     |          |                                           |          |--0.82%--rb_yield
+            |                     |          |                                           |          |          RB_FL_TEST_RAW (inlined)
+            |                     |          |                                           |          |          RB_FL_ANY_RAW (inlined)
+            |                     |          |                                           |          |          rb_array_len (inlined)
+            |                     |          |                                           |          |          rb_ary_each
+            |                     |          |                                           |          |          vm_call_cfunc_with_frame_ (inlined)
+            |                     |          |                                           |          |          |          
+            |                     |          |                                           |          |           --0.82%--vm_call_cfunc_with_frame
+            |                     |          |                                           |          |                     vm_sendish (inlined)
+            |                     |          |                                           |          |                     vm_exec_core
+            |                     |          |                                           |          |                     |          
+            |                     |          |                                           |          |                      --0.68%--vm_exec_loop (inlined)
+            |                     |          |                                           |          |                                rb_vm_exec
+            |                     |          |                                           |          |                                |          
+            |                     |          |                                           |          |                                 --0.61%--rb_ec_exec_node
+            |                     |          |                                           |          |                                           ruby_run_node
+            |                     |          |                                           |          |                                           main
+            |                     |          |                                           |          |                                           0x7ffff7a2a8c1
+            |                     |          |                                           |          |                                           __libc_start_main
+            |                     |          |                                           |          |                                           _start
+            |                     |          |                                           |          |          
+            |                     |          |                                           |           --0.65%--yield_under
+            |                     |          |                                           |                     vm_call_cfunc_with_frame_
+            |                     |          |                                           |                     vm_call_symbol
+            |                     |          |                                           |                     vm_sendish (inlined)
+            |                     |          |                                           |                     vm_exec_core
+            |                     |          |                                           |                     rb_vm_exec
+            |                     |          |                                           |                     rb_yield
+            |                     |          |                                           |                     RB_FL_TEST_RAW (inlined)
+            |                     |          |                                           |                     RB_FL_ANY_RAW (inlined)
+            |                     |          |                                           |                     rb_array_len (inlined)
+            |                     |          |                                           |                     rb_ary_each
+            |                     |          |                                           |                     vm_call_cfunc_with_frame_ (inlined)
+            |                     |          |                                           |                     vm_call_cfunc_with_frame
+            |                     |          |                                           |                     vm_sendish (inlined)
+            |                     |          |                                           |                     vm_exec_core
+            |                     |          |                                           |                     rb_vm_exec
+            |                     |          |                                           |                     rb_yield
+            |                     |          |                                           |                     RB_FL_TEST_RAW (inlined)
+            |                     |          |                                           |                     RB_FL_ANY_RAW (inlined)
+            |                     |          |                                           |                     rb_array_len (inlined)
+            |                     |          |                                           |                     rb_ary_each
+            |                     |          |                                           |                     vm_call_cfunc_with_frame_ (inlined)
+            |                     |          |                                           |                     vm_call_cfunc_with_frame
+            |                     |          |                                           |                     vm_sendish (inlined)
+            |                     |          |                                           |                     vm_exec_core
+            |                     |          |                                           |                     vm_exec_loop (inlined)
+            |                     |          |                                           |                     rb_vm_exec
+            |                     |          |                                           |                     rb_ec_exec_node
+            |                     |          |                                           |                     ruby_run_node
+            |                     |          |                                           |                     main
+            |                     |          |                                           |                     0x7ffff7a2a8c1
+            |                     |          |                                           |                     __libc_start_main
+            |                     |          |                                           |                     _start
+            |                     |          |                                           |          
+            |                     |          |                                            --0.70%--vm_exec_loop (inlined)
+            |                     |          |                                                      rb_vm_exec
+            |                     |          |                                                      |          
+            |                     |          |                                                       --0.65%--rb_ec_exec_node
+            |                     |          |                                                                 ruby_run_node
+            |                     |          |                                                                 main
+            |                     |          |                                                                 0x7ffff7a2a8c1
+            |                     |          |                                                                 __libc_start_main
+            |                     |          |                                                                 _start
+            |                     |          |          
+            |                     |           --1.11%--vm_call0_cc
+            |                     |                     |          
+            |                     |                      --1.11%--rb_call0
+            |                     |                                |          
+            |                     |                                |--0.61%--send_internal
+            |                     |                                |          vm_call_cfunc_with_frame_ (inlined)
+            |                     |                                |          vm_call_cfunc_with_frame
+            |                     |                                |          vm_sendish (inlined)
+            |                     |                                |          vm_exec_core
+            |                     |                                |          |          
+            |                     |                                |           --0.59%--vm_exec_loop (inlined)
+            |                     |                                |                     rb_vm_exec
+            |                     |                                |                     yield_under
+            |                     |                                |                     vm_call_cfunc_with_frame_
+            |                     |                                |                     vm_call_symbol
+            |                     |                                |                     vm_sendish (inlined)
+            |                     |                                |                     vm_exec_core
+            |                     |                                |                     rb_vm_exec
+            |                     |                                |                     rb_yield
+            |                     |                                |                     RB_FL_TEST_RAW (inlined)
+            |                     |                                |                     RB_FL_ANY_RAW (inlined)
+            |                     |                                |                     rb_array_len (inlined)
+            |                     |                                |                     rb_ary_each
+            |                     |                                |                     vm_call_cfunc_with_frame_ (inlined)
+            |                     |                                |                     vm_call_cfunc_with_frame
+            |                     |                                |                     vm_sendish (inlined)
+            |                     |                                |                     vm_exec_core
+            |                     |                                |                     rb_vm_exec
+            |                     |                                |                     rb_yield
+            |                     |                                |                     RB_FL_TEST_RAW (inlined)
+            |                     |                                |                     RB_FL_ANY_RAW (inlined)
+            |                     |                                |                     rb_array_len (inlined)
+            |                     |                                |                     rb_ary_each
+            |                     |                                |                     vm_call_cfunc_with_frame_ (inlined)
+            |                     |                                |                     vm_call_cfunc_with_frame
+            |                     |                                |                     vm_sendish (inlined)
+            |                     |                                |                     vm_exec_core
+            |                     |                                |                     vm_exec_loop (inlined)
+            |                     |                                |                     rb_vm_exec
+            |                     |                                |                     rb_ec_exec_node
+            |                     |                                |                     ruby_run_node
+            |                     |                                |                     main
+            |                     |                                |                     0x7ffff7a2a8c1
+            |                     |                                |                     __libc_start_main
+            |                     |                                |                     _start
+            |                     |                                |          
+            |                     |                                 --0.47%--rb_funcallv_kw
+            |                     |                                           rb_class_new_instance_pass_kw
+            |                     |                                           vm_call_cfunc_with_frame_
+            |                     |          
+            |                      --1.32%--vm_exec_loop (inlined)
+            |                                rb_vm_exec
+            |                                |          
+            |                                |--0.70%--rb_yield
+            |                                |          RB_FL_TEST_RAW (inlined)
+            |                                |          RB_FL_ANY_RAW (inlined)
+            |                                |          rb_array_len (inlined)
+            |                                |          rb_ary_each
+            |                                |          vm_call_cfunc_with_frame_ (inlined)
+            |                                |          vm_call_cfunc_with_frame
+            |                                |          vm_sendish (inlined)
+            |                                |          vm_exec_core
+            |                                |          vm_exec_loop (inlined)
+            |                                |          rb_vm_exec
+            |                                |          rb_ec_exec_node
+            |                                |          ruby_run_node
+            |                                |          main
+            |                                |          0x7ffff7a2a8c1
+            |                                |          __libc_start_main
+            |                                |          _start
+            |                                |          
+            |                                 --0.60%--yield_under
+            |                                           vm_call_cfunc_with_frame_
+            |                                           vm_call_symbol
+            |                                           vm_sendish (inlined)
+            |                                           vm_exec_core
+            |                                           rb_vm_exec
+            |                                           rb_yield
+            |                                           RB_FL_TEST_RAW (inlined)
+            |                                           RB_FL_ANY_RAW (inlined)
+            |                                           rb_array_len (inlined)
+            |                                           rb_ary_each
+            |                                           vm_call_cfunc_with_frame_ (inlined)
+            |                                           vm_call_cfunc_with_frame
+            |                                           vm_sendish (inlined)
+            |                                           vm_exec_core
+            |                                           rb_vm_exec
+            |                                           rb_yield
+            |                                           RB_FL_TEST_RAW (inlined)
+            |                                           RB_FL_ANY_RAW (inlined)
+            |                                           rb_array_len (inlined)
+            |                                           rb_ary_each
+            |                                           vm_call_cfunc_with_frame_ (inlined)
+            |                                           vm_call_cfunc_with_frame
+            |                                           vm_sendish (inlined)
+            |                                           vm_exec_core
+            |                                           vm_exec_loop (inlined)
+            |                                           rb_vm_exec
+            |                                           rb_ec_exec_node
+            |                                           ruby_run_node
+            |                                           main
+            |                                           0x7ffff7a2a8c1
+            |                                           __libc_start_main
+            |                                           _start
+            |          
+            |--1.75%--vm_base_ptr (inlined)
+            |          vm_exec_core
+            |          |          
+            |           --1.35%--rb_vm_exec
+            |                     |          
+            |                      --0.84%--rb_yield
+            |                                |          
+            |                                 --0.65%--RB_FL_TEST_RAW (inlined)
+            |                                           RB_FL_ANY_RAW (inlined)
+            |                                           rb_array_len (inlined)
+            |                                           |          
+            |                                            --0.59%--rb_ary_each
+            |                                                      vm_call_cfunc_with_frame_ (inlined)
+            |                                                      |          
+            |                                                       --0.56%--vm_call_cfunc_with_frame
+            |                                                                 vm_sendish (inlined)
+            |                                                                 vm_exec_core
+            |                                                                 |          
+            |                                                                  --0.42%--rb_vm_exec
+            |          
+            |--0.96%--get_shape_id_from_flags (inlined)
+            |          RBASIC_SHAPE_ID (inlined)
+            |          vm_getivar (inlined)
+            |          |          
+            |           --0.91%--vm_getinstancevariable (inlined)
+            |                     vm_exec_core
+            |                     |          
+            |                      --0.70%--rb_vm_exec
+            |                                |          
+            |                                 --0.46%--rb_yield
+            |          
+             --0.85%--vm_sendish (inlined)
+                       |          
+                        --0.84%--vm_exec_core
+                                  |          
+                                   --0.72%--rb_vm_exec
+                                             |          
+                                              --0.44%--rb_yield
+
+     4.56%  ruby             ruby                  [.] vm_call_iseq_setup_normal_0start_0params_0locals
+            |          
+            |--2.73%--vm_call_iseq_setup_normal (inlined)
+            |          vm_call_iseq_setup_normal_0start_0params_0locals
+            |          |          
+            |          |--2.19%--rb_vm_exec
+            |          |          |          
+            |          |          |--1.36%--rb_yield
+            |          |          |          |          
+            |          |          |           --1.05%--RB_FL_TEST_RAW (inlined)
+            |          |          |                     RB_FL_ANY_RAW (inlined)
+            |          |          |                     rb_array_len (inlined)
+            |          |          |                     |          
+            |          |          |                      --0.93%--rb_ary_each
+            |          |          |                                vm_call_cfunc_with_frame_ (inlined)
+            |          |          |                                |          
+            |          |          |                                 --0.91%--vm_call_cfunc_with_frame
+            |          |          |                                           vm_sendish (inlined)
+            |          |          |                                           vm_exec_core
+            |          |          |                                           |          
+            |          |          |                                            --0.73%--rb_vm_exec
+            |          |          |          
+            |          |           --0.50%--vm_call0_cc
+            |          |                     rb_call0
+            |          |          
+            |           --0.47%--vm_exec_loop (inlined)
+            |                     rb_vm_exec
+            |          
+             --1.62%--vm_push_frame (inlined)
+                       vm_call_iseq_setup_normal (inlined)
+                       vm_call_iseq_setup_normal_0start_0params_0locals
+                       |          
+                        --1.29%--rb_vm_exec
+                                  |          
+                                   --0.79%--rb_yield
+                                             |          
+                                              --0.61%--RB_FL_TEST_RAW (inlined)
+                                                        RB_FL_ANY_RAW (inlined)
+                                                        rb_array_len (inlined)
+                                                        |          
+                                                         --0.52%--rb_ary_each
+                                                                   vm_call_cfunc_with_frame_ (inlined)
+                                                                   |          
+                                                                    --0.50%--vm_call_cfunc_with_frame
+                                                                              vm_sendish (inlined)
+                                                                              vm_exec_core
+                                                                              |          
+                                                                               --0.40%--rb_vm_exec
+
+     2.89%  ruby             ruby                  [.] vm_call_iseq_setup_normal_0start_1params_1locals
+            |          
+            |--1.74%--vm_call_iseq_setup_normal (inlined)
+            |          vm_call_iseq_setup_normal_0start_1params_1locals
+            |          |          
+            |           --1.35%--rb_vm_exec
+            |                     |          
+            |                      --0.84%--rb_yield
+            |                                |          
+            |                                 --0.61%--RB_FL_TEST_RAW (inlined)
+            |                                           RB_FL_ANY_RAW (inlined)
+            |                                           rb_array_len (inlined)
+            |                                           |          
+            |                                            --0.58%--rb_ary_each
+            |                                                      vm_call_cfunc_with_frame_ (inlined)
+            |                                                      |          
+            |                                                       --0.56%--vm_call_cfunc_with_frame
+            |                                                                 vm_sendish (inlined)
+            |                                                                 vm_exec_core
+            |          
+             --0.99%--vm_push_frame (inlined)
+                       vm_call_iseq_setup_normal (inlined)
+                       vm_call_iseq_setup_normal_0start_1params_1locals
+                       |          
+                        --0.77%--rb_vm_exec
+                                  |          
+                                   --0.47%--rb_yield
+
+     2.49%  ruby             ruby                  [.] rb_wb_protected_newobj_of
+            |          
+             --2.08%--ractor_cache_allocate_slot (inlined)
+                       newobj_alloc (inlined)
+                       rb_gc_impl_new_obj (inlined)
+                       newobj_of (inlined)
+                       rb_wb_protected_newobj_of
+                       |          
+                        --0.42%--str_alloc_embed (inlined)
+
+     2.46%  ruby             ruby                  [.] rb_vm_opt_getconstant_path
+            |          
+            |--1.27%--rb_vm_opt_getconstant_path
+            |          |          
+            |           --1.24%--vm_exec_core
+            |                     |          
+            |                      --0.98%--rb_vm_exec
+            |                                |          
+            |                                 --0.58%--rb_yield
+            |                                           |          
+            |                                            --0.47%--RB_FL_TEST_RAW (inlined)
+            |                                                      RB_FL_ANY_RAW (inlined)
+            |                                                      rb_array_len (inlined)
+            |                                                      |          
+            |                                                       --0.42%--rb_ary_each
+            |                                                                 vm_call_cfunc_with_frame_ (inlined)
+            |                                                                 |          
+            |                                                                  --0.41%--vm_call_cfunc_with_frame
+            |                                                                            vm_sendish (inlined)
+            |                                                                            vm_exec_core
+            |          
+             --1.11%--vm_inlined_ic_hit_p (inlined)
+                       vm_ic_hit_p (inlined)
+                       rb_vm_opt_getconstant_path
+                       vm_exec_core
+                       |          
+                        --0.86%--rb_vm_exec
+                                  |          
+                                   --0.53%--rb_yield
+                                             |          
+                                              --0.44%--RB_FL_TEST_RAW (inlined)
+                                                        RB_FL_ANY_RAW (inlined)
+                                                        rb_array_len (inlined)
+
+     2.06%  ruby             ruby                  [.] vm_call_cfunc_with_frame
+            |          
+             --1.02%--vm_call_cfunc_with_frame_ (inlined)
+                       vm_call_cfunc_with_frame
+                       vm_sendish (inlined)
+                       vm_exec_core
+                       |          
+                        --0.82%--rb_vm_exec
+                                  |          
+                                   --0.46%--rb_yield
+
+     1.59%  ruby             ruby                  [.] vm_call_iseq_setup
+            |          
+             --1.19%--vm_call_iseq_setup
+                       |          
+                        --1.04%--vm_sendish (inlined)
+                                  vm_exec_core
+                                  |          
+                                   --0.83%--rb_vm_exec
+                                             |          
+                                              --0.46%--rb_yield
+                                                        |          
+                                                         --0.43%--RB_FL_TEST_RAW (inlined)
+                                                                   RB_FL_ANY_RAW (inlined)
+                                                                   rb_array_len (inlined)
+
+     1.59%  ruby             ruby                  [.] rb_id_table_lookup
+            |          
+            |--0.69%--rb_id_table_lookup
+            |          
+             --0.50%--rb_id_to_serial (inlined)
+                       id2key (inlined)
+                       rb_id_table_lookup
+
+     1.52%  ruby             ruby                  [.] gc_sweep_step
+            |          
+             --0.87%--RB_BUILTIN_TYPE (inlined)
+                       |          
+                        --0.87%--gc_sweep_plane (inlined)
+                                  gc_sweep_page (inlined)
+                                  gc_sweep_step
+                                  |          
+                                   --0.48%--gc_sweep_continue (inlined)
+                                             gc_continue
+                                             heap_prepare (inlined)
+                                             heap_next_free_page (inlined)
+                                             newobj_cache_miss
+                                             newobj_alloc (inlined)
+                                             |          
+                                              --0.48%--rb_gc_impl_new_obj (inlined)
+                                                        newobj_of (inlined)
+                                                        |          
+                                                         --0.45%--rb_wb_protected_newobj_of
+
+     1.32%  ruby             ruby                  [.] match_at
+            |          
+             --1.28%--match_at
+                       |          
+                        --1.26%--onig_search_gpos
+                                  onig_search
+                                  |          
+                                  |--0.80%--rb_reg_onig_match (inlined)
+                                  |          rb_reg_search_set_match
+                                  |          |          
+                                  |           --0.40%--str_gsub
+                                  |                     vm_call_cfunc_with_frame_ (inlined)
+                                  |                     vm_call_cfunc_with_frame
+                                  |                     vm_sendish (inlined)
+                                  |                     vm_exec_core
+                                  |                     rb_vm_exec
+                                  |                     rb_yield
+                                  |                     RB_FL_TEST_RAW (inlined)
+                                  |                     RB_FL_ANY_RAW (inlined)
+                                  |                     rb_array_len (inlined)
+                                  |          
+                                   --0.46%--reg_onig_search (inlined)
+                                             rb_reg_onig_match (inlined)
+                                             rb_reg_match_p (inlined)
+
+     1.26%  ruby             ruby                  [.] rb_vm_search_method_slowpath
+            |          
+             --1.18%--vm_search_cc (inlined)
+                       rb_vm_search_method_slowpath
+                       vm_search_method_slowpath0 (inlined)
+                       |          
+                        --1.09%--vm_search_method_fastpath (inlined)
+                                  |          
+                                   --0.91%--vm_sendish (inlined)
+                                             vm_exec_core
+                                             |          
+                                              --0.85%--rb_vm_exec
+                                                        |          
+                                                         --0.57%--rb_yield
+
+     1.12%  ruby             ruby                  [.] rb_call0
+            |          
+             --0.47%--gccct_method_search (inlined)
+                       rb_call0
+
+     1.08%  ruby             ruby                  [.] vm_sendish.constprop.0
+            |          
+             --0.58%--vm_search_method_fastpath (inlined)
+                       vm_sendish (inlined)
+                       vm_exec_core
+                       |          
+                        --0.44%--rb_vm_exec
+
+     0.97%  ruby             ruby                  [.] find_table_entry_ind
+            |          
+             --0.58%--find_table_entry_ind
+                       |          
+                        --0.56%--rb_st_lookup
+
+     0.97%  ruby             ruby                  [.] vm_search_super_method
+     0.92%  ruby             ruby                  [.] callable_method_entry_or_negative
+            |          
+             --0.81%--cached_callable_method_entry (inlined)
+                       callable_method_entry_or_negative
+                       callable_method_entry (inlined)
+                       |          
+                        --0.43%--callable_method_entry_refinements
+
+     0.89%  ruby             ruby                  [.] vm_call_iseq_setup_normal_opt_start
+            |          
+             --0.63%--vm_call_iseq_setup_normal_opt_start
+                       |          
+                        --0.61%--vm_sendish (inlined)
+                                  vm_exec_core
+                                  |          
+                                   --0.51%--rb_vm_exec
+
+     0.76%  ruby             ruby                  [.] setup_parameters_complex
+            |          
+             --0.64%--setup_parameters_complex
+                       |          
+                        --0.58%--vm_callee_setup_arg
+                                  vm_call_iseq_setup_2 (inlined)
+                                  vm_call_iseq_setup
+                                  |          
+                                   --0.46%--vm_sendish (inlined)
+                                             vm_exec_core
+
+     0.75%  ruby             ruby                  [.] vm_call0_body
+            |          
+             --0.60%--vm_call0_body
+                       |          
+                        --0.48%--vm_call0_cc
+                                  |          
+                                   --0.48%--rb_call0
+                                             |          
+                                              --0.43%--rb_funcallv_kw
+                                                        |          
+                                                         --0.43%--rb_class_new_instance_pass_kw
+                                                                   vm_call_cfunc_with_frame_ (inlined)
+
+     0.70%  ruby             ruby                  [.] vm_call_ivar
+            |          
+             --0.43%--RB_SPECIAL_CONST_P (inlined)
+                       vm_getivar (inlined)
+                       vm_call_ivar
+                       |          
+                        --0.43%--vm_sendish (inlined)
+                                  vm_exec_core
+
+     0.69%  ruby             ruby                  [.] vm_yield_setup_args
+     0.68%  ruby             libc.so.6             [.] malloc_usable_size
+            |          
+             --0.67%--malloc_usable_size
+                       |          
+                        --0.51%--rb_gc_obj_free
+                                  gc_sweep_plane (inlined)
+                                  gc_sweep_page (inlined)
+                                  gc_sweep_step
+
+     0.61%  ruby             ruby                  [.] vm_call_iseq_setup_normal_0start_1params_2locals
+     0.55%  ruby             ruby                  [.] vm_call_iseq_setup_normal_0start_2params_2locals
+     0.52%  ruby             ruby                  [.] rb_st_lookup
+     0.51%  ruby             ruby                  [.] invoke_block_from_c_bh
+     0.51%  ruby             ruby                  [.] vm_invoke_iseq_block
+            |          
+             --0.44%--vm_invoke_iseq_block
+                       |          
+                        --0.43%--vm_sendish (inlined)
+                                  vm_exec_core
+
+     0.46%  ruby             libc.so.6             [.] malloc
+            |          
+             --0.45%--malloc
+
+     0.44%  ruby             ruby                  [.] rb_gc_writebarrier
+     0.43%  ruby             ruby                  [.] vm_call_iseq_bmethod
+     0.43%  ruby             ruby                  [.] vm_call_iseq_setup_normal_0start_0params_1locals
+     0.41%  ruby             ruby                  [.] rb_any_hash
+     0.41%  ruby             sha2.so               [.] rb_Digest_SHA256_Transform
+            |          
+             --0.41%--rb_Digest_SHA256_Transform
+
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#

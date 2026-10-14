@@ -1,0 +1,8 @@
+arm=afdo
+ruby=3.4.11
+gcc=15.2.0
+cflags=-O3 -march=native -mtune=native -fno-omit-frame-pointer -g
+ldflags=
+md5=cbe95001de7d25a926ebb45fae2154f2
+built=2026-10-13T04:10:23Z
+host=<DUT_HOSTNAME>

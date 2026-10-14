@@ -1,0 +1,12 @@
+base,ruby 3.4.11 (2026-09-23 revision 592f1ffdb3) +PRISM [x86_64-linux]
+pgo,ruby 3.4.11 (2026-09-23 revision 592f1ffdb3) +PRISM [x86_64-linux]
+pgolto,ruby 3.4.11 (2026-09-23 revision 592f1ffdb3) +PRISM [x86_64-linux]
+pgoltob,ruby 3.4.11 (2026-09-23 revision 592f1ffdb3) +PRISM [x86_64-linux]
+pgob,ruby 3.4.11 (2026-09-23 revision 592f1ffdb3) +PRISM [x86_64-linux]
+afdo,ruby 3.4.11 (2026-09-23 revision 592f1ffdb3) +PRISM [x86_64-linux]
+afdolto,ruby 3.4.11 (2026-09-23 revision 592f1ffdb3) +PRISM [x86_64-linux]
+afdoltob,ruby 3.4.11 (2026-09-23 revision 592f1ffdb3) +PRISM [x86_64-linux]
+afdob,ruby 3.4.11 (2026-09-23 revision 592f1ffdb3) +PRISM [x86_64-linux]
+
+bench,base (ms),pgo (ms),pgolto (ms),pgoltob (ms),pgob (ms),afdo (ms),afdolto (ms),afdoltob (ms),afdob (ms),pgo 1st itr,pgolto 1st itr,pgoltob 1st itr,pgob 1st itr,afdo 1st itr,afdolto 1st itr,afdoltob 1st itr,afdob 1st itr,base/pgo,p-value,sig,base/pgolto,p-value,sig,base/pgoltob,p-value,sig,base/pgob,p-value,sig,base/afdo,p-value,sig,base/afdolto,p-value,sig,base/afdoltob,p-value,sig,base/afdob,p-value,sig
+psych-load,2486.0 ± 0.1%,2397.5 ± 0.1%,2332.4 ± 0.0%,2272.1 ± 0.1%,2373.2 ± 0.1%,2306.5 ± 0.1%,2201.4 ± 0.1%,2160.2 ± 0.1%,2280.0 ± 0.1%,1.040998859662107,1.0702868395159435,1.0997669351399246,1.0496265581561737,1.082995374239529,1.1334905241825177,1.1524672319799987,1.0953283510033072,1.037 (***),1.9e-20,p < 0.001,1.066 (***),8.7e-19,p < 0.001,1.094 (***),2.4e-23,p < 0.001,1.048 (***),3.2e-21,p < 0.001,1.078 (***),4.9e-24,p < 0.001,1.129 (***),1.6e-26,p < 0.001,1.151 (***),2.0e-28,p < 0.001,1.090 (***),1.8e-25,p < 0.001

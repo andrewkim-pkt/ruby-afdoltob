@@ -1,0 +1,22 @@
+WARNING: events were regrouped to match PMUs
+
+ Performance counter stats for 'system wide':
+
+    11157767284081      cycles                                                                
+    11157767254304      ref-cycles                                                            
+     5114603589056      instructions                                                          
+      883769049603      branches                                                              
+       53844254113      branch-misses                                                         
+    27894234424105      slots                                                                 
+     5018310605387      topdown-retiring                                                      
+     9094090759784      topdown-fe-bound                                                      
+     9563488749572      topdown-be-bound                                                      
+     4218344311408      topdown-bad-spec                                                      
+      704870864754      icache_64b.iftag_stall                                                
+      168021499041      icache_64b.iftag_miss                                                 
+     9149337656115      idq_uops_not_delivered.core                                           
+      136676659388      itlb_misses.walk_pending                                              
+       22472926443      l2_rqsts.code_rd_miss                                                 
+
+      30.061010279 seconds time elapsed
+

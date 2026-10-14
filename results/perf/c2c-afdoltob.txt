@@ -1,0 +1,105 @@
+=================================================
+            Trace Event Information              
+=================================================
+  Total records                     :   29822992
+  Locked Load/Store Operations      :     295741
+  Load Operations                   :   14902793
+  Loads - uncacheable               :          0
+  Loads - IO                        :          0
+  Loads - Miss                      :        208
+  Loads - no mapping                :      11027
+  Load Fill Buffer Hit              :    4787663
+  Load L1D hit                      :    4147045
+  Load L2D hit                      :     878193
+  Load LLC hit                      :    2221865
+  Load Local HITM                   :       4567
+  Load Remote HITM                  :       4371
+  Load Remote HIT                   :          0
+  Load Local DRAM                   :    2848221
+  Load Remote DRAM                  :       8571
+  Load MESI State Exclusive         :       8571
+  Load MESI State Shared            :    2848221
+  Load LLC Misses                   :    2861163
+  Load access blocked by data       :          0
+  Load access blocked by address    :          0
+  Load HIT Local Peer               :          0
+  Load HIT Remote Peer              :          0
+  LLC Misses to Local DRAM          :       99.5%
+  LLC Misses to Remote DRAM         :        0.3%
+  LLC Misses to Remote cache (HIT)  :        0.0%
+  LLC Misses to Remote cache (HITM) :        0.2%
+  Store Operations                  :   14920199
+  Store - uncacheable               :          0
+  Store - no mapping                :          0
+  Store L1D Hit                     :   14547944
+  Store L1D Miss                    :     372255
+  Store No available memory level   :          0
+  No Page Map Rejects               :    1150572
+  Unable to parse data source       :          0
+
+=================================================
+    Global Shared Cache Line Event Information   
+=================================================
+  Total Shared Cache Lines          :       6723
+  Load HITs on shared lines         :      39566
+  Fill Buffer Hits on shared lines  :      12392
+  L1D hits on shared lines          :       4079
+  L2D hits on shared lines          :       9075
+  LLC hits on shared lines          :       9523
+  Load hits on peer cache or nodes  :          0
+  Locked Access on shared lines     :          2
+  Blocked Access on shared lines    :          0
+  Store HITs on shared lines        :        329
+  Store L1D hits on shared lines    :        316
+  Store No available memory level   :          0
+  Total Merged records              :       9267
+
+=================================================
+                 c2c details                     
+=================================================
+  Events                            : cpu/mem-loads,ldlat=30/P
+                                    : cpu/mem-stores/P
+                                    : dummy:u
+  Cachelines sort on                : Total HITMs
+  Cacheline data grouping           : offset,iaddr
+
+=================================================
+           Shared Data Cache Line Table          
+=================================================
+#
+#        ----------- Cacheline ----------      Tot  ------- Load Hitm -------    Total    Total    Total  --------- Stores --------  ----- Core Load Hit -----  - LLC Load Hit --  - RMT Load Hit --  --- Load Dram ----
+# Index             Address  Node  PA cnt     Hitm    Total  LclHitm  RmtHitm  records    Loads   Stores    L1Hit   L1Miss      N/A       FB       L1       L2    LclHit  LclHitm    RmtHit  RmtHitm       Lcl       Rmt
+# .....  ..................  ....  ......  .......  .......  .......  .......  .......  .......  .......  .......  .......  .......  .......  .......  .......  ........  .......  ........  .......  ........  ........
+#
+      0      0x71e035f4b400   N/A       0   23.89%     2135     1078     1057     6827     6581      246      237        9        0     1980      559      770        62     1078         0     1057         1      1074
+      1  0xffffffff8f209a80     0       1    0.26%       23       13       10     1224     1223        1        0        1        0      679       11        0       500       13         0       10         0        10
+      2  0xffffffff8f209a00     0       1    0.12%       11       10        1     3192     3189        3        1        2        0     1762      119      814       481       10         0        1         0         2
+
+=================================================
+      Shared Cache Line Distribution Pareto      
+=================================================
+#
+#        ----- HITM -----  ------- Store Refs ------  --------- Data address ---------                      ---------- cycles ----------    Total       cpu                            Shared                      
+#   Num  RmtHitm  LclHitm   L1 Hit  L1 Miss      N/A              Offset  Node  PA cnt        Code address  rmt hitm  lcl hitm      load  records       cnt                    Symbol  Object     Source:Line  Node{cpu list}
+# .....  .......  .......  .......  .......  .......  ..................  ....  ......  ..................  ........  ........  ........  .......  ........  ........................  ....  ..............  ....
+#
+  ----------------------------------------------------------------------
+      0     1057     1078      237        9        0      0x71e035f4b400
+  ----------------------------------------------------------------------
+          98.58%   98.98%    0.00%    0.00%    0.00%                 0x0   N/A       0      0x632cdfa3c71c       463       265        83     4052         2  [.] perf_mmap__read_head  perf  compiler.h:181   1{63,127}
+           1.42%    1.02%    0.00%    0.00%    0.00%                 0x0   N/A       0      0x632cdfa3c803       416       217       269     2529         2  [.] perf_mmap__read_init  perf  compiler.h:181   1{63,127}
+           0.00%    0.00%  100.00%  100.00%    0.00%                 0x8   N/A       0      0x632cdfa3c768         0         0         0      246         2  [.] perf_mmap__consume    perf  compiler.h:195   1{63,127}
+
+  ----------------------------------------------------------------------
+      1       10       13        0        1        0  0xffffffff8f209a80
+  ----------------------------------------------------------------------
+         100.00%  100.00%    0.00%    0.00%    0.00%                 0x0     0       1  0xffffffff8cd91d09       986       752      1039     1107       128  [k] 0xffffffff8cd91d09  [unknown]         ??:0          0{0-31,64-95}  1{32-63,96-127}
+           0.00%    0.00%    0.00%  100.00%    0.00%                 0x0     0       1  0xffffffff8cd9086a         0         0       346        3         1  [k] 0xffffffff8cd9086a  [unknown]         ??:0          0{0}
+
+  ----------------------------------------------------------------------
+      2        1       10        1        2        0  0xffffffff8f209a00
+  ----------------------------------------------------------------------
+           0.00%   60.00%    0.00%    0.00%    0.00%                 0x0     0       1  0xffffffff8cd75b8b         0       588       919     1470       127  [k] 0xffffffff8cd75b8b  [unknown]         ??:0          0{1-31,64-95}  1{32-63,96-127}
+           0.00%   30.00%    0.00%    0.00%    0.00%                 0x0     0       1  0xffffffff8cd909b3         0       612       999      149        78  [k] 0xffffffff8cd909b3  [unknown]         ??:0          0{1,4-7,9-13,15,17-19,21-22,27-31,66,69,71,74-76,78-79,81-92,95}  1{32,35-37,41-42,47-52,54-60,62-63,96-97,99,106-107,110,113-114,116-118,121-123,126}
+         100.00%   10.00%    0.00%    0.00%    0.00%                 0x0     0       1  0xffffffff8cbc77fb       949       495       623       70        49  [k] 0xffffffff8cbc77fb  [unknown]         ??:0          0{2,5-8,10-11,22,26,29,65-67,69,71,74-75,82,90-92}  1{32,34,37,39,43,45-48,51,60,62-63,98-100,102,108-111,116,118,120-123,127}
+           0.00%    0.00%  100.00%  100.00%    0.00%                 0x0     0       1  0xffffffff8cd9085c         0         0        49        9         1  [k] 0xffffffff8cd9085c  [unknown]         ??:0          0{0}

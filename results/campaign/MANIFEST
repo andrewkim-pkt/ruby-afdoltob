@@ -1,0 +1,16 @@
+campaign=campaign-20261013-083459
+host=<DUT_HOSTNAME>  Ubuntu 26.04 LTS  kernel=7.0.0-1006-aws
+cpu=Intel(R) Xeon(R) Platinum 8375C CPU @ 2.90GHz  vcpu=128
+gcc=15.2.0  ruby=3.4.11
+workload=yjit-bench headline  warmup=5  bench=8
+started=2026-10-13T08:34:59Z
+arms=base pgo pgolto pgoltob pgob afdo afdolto afdoltob afdob
+  base md5=6c2553ec54001f8728ee5dda48c1870a
+  pgo md5=48c9f74184aefe151bebd30d17139f3d
+  pgolto md5=5a06fe0537047eafb867323788611ce2
+  pgoltob md5=142d6389db35ff8518f28727a2d659e1
+  pgob md5=4eddff00bc5db9109929ce4767247648
+  afdo md5=cbe95001de7d25a926ebb45fae2154f2
+  afdolto md5=49ecf0eff88edc71c5d2dcd15352084f
+  afdoltob md5=d656566bec6b20f4baa4880e4beb0d83
+  afdob md5=139b892d2a18fd61b19d1eb11f6ab934

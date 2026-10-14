@@ -1,0 +1,8 @@
+arm=pgo
+ruby=3.4.11
+gcc=15.2.0
+cflags=-O3 -march=native -mtune=native -fno-omit-frame-pointer -g
+ldflags=
+md5=48c9f74184aefe151bebd30d17139f3d
+built=2026-10-13T03:40:29Z
+host=<DUT_HOSTNAME>
