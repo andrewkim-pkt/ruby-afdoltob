@@ -54,7 +54,10 @@ gcc_version_check() {
 }
 
 # ---------------------------------------------------------------- ruby
-RUBY_VER="${RUBY_VER:-3.4.11}"
+# akim 2026-10-14: switched from 3.4.11 to 4.0.6. Note the gem ABI directory changes with it
+# (3.4.0 -> 4.0.0), so the shared gem set must be rebuilt from a freshly primed base arm; the old
+# gems-shared tree cannot serve a 4.0 interpreter.
+RUBY_VER="${RUBY_VER:-4.0.6}"
 RUBY_SRC_URL="https://cache.ruby-lang.org/pub/ruby/${RUBY_VER%.*}/ruby-${RUBY_VER}.tar.gz"
 
 # ---------------------------------------------------------------- flags
@@ -79,23 +82,55 @@ ARMS="${ARMS:-base pgo pgolto pgoltob pgob afdo afdolto afdoltob afdob}"
 # SWAPPING IN THE REAL WORKLOAD IS A TWO-VARIABLE CHANGE: point TRAIN_CMD and MEAS_CMD at it.
 # Nothing else in the harness knows what the workload is.
 YJIT_BENCH="${YJIT_BENCH:-$REMOTE_ROOT/src/yjit-bench}"
-HL_TRAIN_WARMUP="${HL_TRAIN_WARMUP:-1}"
-HL_TRAIN_BENCH="${HL_TRAIN_BENCH:-2}"
+
+# ---------------------------------------------------------------- YJIT
+# THE CUSTOMER RUNS WITH YJIT ENABLED (akim, 2026-10-14), so every arm is trained AND measured
+# with --yjit. The first campaign ran interpreter-only, which was the wrong operating point.
+#
+# All nine arms already have YJIT compiled in (rustc 1.93.1 was present at configure time), so
+# this needs no rebuild -- `--yjit` is a runtime flag. What it DOES invalidate is the profiles:
+# they were collected in interpreter mode, and with YJIT on the hot C code is a different set
+# (YJIT side-exits, GC and allocation under JIT, C function calls, megamorphic lookup) while the
+# bytecode dispatch loop that dominated the interpreter profile largely disappears into
+# JIT-generated machine code. So all eight FDO arms are retrained.
+#
+# EXPECT A SMALLER GAIN, and that is not a failure: gcc-side FDO cannot touch YJIT's output (it is
+# generated at runtime) nor YJIT itself (Rust, not compiled by gcc). The remaining FDO surface is
+# the C runtime. Measured reference point: YJIT alone takes base lobsters 1164.4 -> 773.2 ms.
+# MUST BE EXPORTED, not just set. TRAIN_CMD is executed via `bash -c "$TRAIN_CMD"`, and that
+# inner shell expands $RUBY_FLAGS from its own ENVIRONMENT -- a plain shell variable is invisible
+# to it. The first YJIT rebuild attempt silently trained the pgo arm in interpreter mode for
+# exactly this reason: the flag expanded to empty and the only evidence was the harness banner
+# reading "+PRISM" with no "+YJIT". Always check that banner after changing this.
+export RUBY_FLAGS="${RUBY_FLAGS:---yjit}"
+
+# Training iterations are raised from 1/2 because of SAMPLE DILUTION under YJIT: a large share of
+# cycles now lands in anonymous JIT-generated code with no symbols, which create_gcov and
+# perf2bolt both discard. More iterations are needed to collect comparable coverage of the
+# `ruby` binary's own text.
+HL_TRAIN_WARMUP="${HL_TRAIN_WARMUP:-3}"
+HL_TRAIN_BENCH="${HL_TRAIN_BENCH:-5}"
 
 # Training is about COVERAGE, not precision: few iterations, all 17 benchmarks. An instrumented
 # build is several times slower, so spending iterations here buys nothing.
 # Single-quoted on purpose -- $RUBY_BIN and $ARM are exported by ruby-build.sh and expand when
 # the command actually runs, not when this file is sourced.
-TRAIN_CMD="${TRAIN_CMD:-cd \$YJIT_BENCH && ./run_benchmarks.rb --category=headline --warmup=\$HL_TRAIN_WARMUP --bench=\$HL_TRAIN_BENCH -e train::\$RUBY_BIN --out-name=train-\$ARM}"
+TRAIN_CMD="${TRAIN_CMD:-cd \$YJIT_BENCH && ./run_benchmarks.rb --category=headline --warmup=\$HL_TRAIN_WARMUP --bench=\$HL_TRAIN_BENCH -e \"train::\$RUBY_BIN \$RUBY_FLAGS\" --out-name=train-\$ARM}"
 
 # The measured run is driven by ruby-campaign.sh, which puts all 9 arms in ONE harness invocation
 # so the comparison is paired per benchmark. MEAS_CMD exists only to satisfy the arm-level checks.
-MEAS_CMD="${MEAS_CMD:-cd \$YJIT_BENCH && ./run_benchmarks.rb --category=headline -e m::\$RUBY_BIN}"
+MEAS_CMD="${MEAS_CMD:-cd \$YJIT_BENCH && ./run_benchmarks.rb --category=headline -e \"m::\$RUBY_BIN \$RUBY_FLAGS\"}"
 
-# Measured-run iteration counts. 5/8 was chosen after calibration: liquid-render showed 0.9% at
-# bench=3, so 8 is comfortably inside the noise floor needed to call a 3-5% effect.
-HL_WARMUP="${HL_WARMUP:-5}"
+# Measured-run iteration counts. Warmup is raised from 5 to 12 for the YJIT campaign: YJIT
+# compiles lazily, so early iterations include JIT compilation work rather than steady-state
+# execution, and yjit-bench's own default is 15 for exactly this reason. bench=8 was already
+# comfortably inside the noise floor (liquid-render showed 0.9% at bench=3).
+HL_WARMUP="${HL_WARMUP:-12}"
 HL_BENCH="${HL_BENCH:-8}"
+
+# The customer is most interested in `lobsters` (akim, 2026-10-14), so it is reported as the
+# headline figure alongside the 16-benchmark geomean rather than being buried in the table.
+FOCUS_BENCH="${FOCUS_BENCH:-lobsters}"
 
 ruby_env_check() {
   local missing=0

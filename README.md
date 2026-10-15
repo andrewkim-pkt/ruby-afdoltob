@@ -1,26 +1,71 @@
-# ruby-afdoltob — Ruby 3.4.11 feedback-directed optimisation with gcc 15.2.0
+# ruby-afdoltob — Ruby feedback-directed optimisation with gcc 15.2.0
 
-A nine-arm study of **PGO, AutoFDO, LTO and BOLT** applied to CRuby 3.4.11, measured mirrored on
-yjit-bench's 16 headline benchmarks, with hardware-counter analysis of *why* the winning
+A nine-arm study of **PGO, AutoFDO, LTO and BOLT** applied to CRuby, measured mirrored on
+ruby-bench's 16 headline benchmarks, with hardware-counter analysis of *why* the winning
 configuration wins.
 
-**Headline: `afdoltob` (AutoFDO + LTO + BOLT) is +13.04% over an `-O3 -march=native` baseline.**
+Two campaigns at two operating points. **The Ruby 4.0.6 + YJIT campaign is the one to quote** — it
+is the deployment configuration; the 3.4.11 interpreter campaign is kept for comparison.
 
-| arm | fwd | rev | **mirrored** | spread |
+## Primary: Ruby 4.0.6 with YJIT enabled
+
+**`afdoltob` (AutoFDO + LTO + BOLT) is +20.42% geomean, and +13.77% on `lobsters`.**
+
+| arm | fwd | rev | **mirrored** | spread | **lobsters** |
+|---|---|---|---|---|---|
+| base | +0.00% | +0.00% | — | 0.00% | — |
+| pgo | +8.42% | +8.44% | **+8.43%** | 0.02% | +6.55% |
+| pgolto | +13.21% | +13.74% | **+13.47%** | 0.53% | +3.92% |
+| pgoltob | +18.03% | +17.18% | **+17.60%** | 0.85% | +9.00% |
+| pgob | +11.51% | +12.28% | **+11.90%** | 0.77% | +9.71% |
+| afdo | +9.98% | +9.80% | **+9.89%** | 0.18% | +5.97% |
+| afdolto | +14.50% | +14.50% | **+14.50%** | 0.00% | +7.83% |
+| **afdoltob** | +20.16% | +20.68% | **+20.42%** | 0.52% | **+13.77%** |
+| afdob | +16.59% | +16.98% | **+16.78%** | 0.39% | +12.35% |
+
+Full detail, per-benchmark tables and perf analysis: **[RESULTS-RUBY40-YJIT.md](RESULTS-RUBY40-YJIT.md)**.
+
+**Note for anyone whose own proxy is `lobsters`:** the arm ordering there differs from the geomean.
+LTO *hurts* the PGO path on lobsters (`pgolto` +3.92% is worse than plain `pgo` +6.55%, and `pgob`
++9.71% beats `pgoltob` +9.00%), while it helps on the AutoFDO path. `afdoltob` wins either way,
+which is the simplest reason to choose it.
+
+## Secondary: Ruby 3.4.11, interpreter mode (YJIT off)
+
+**`afdoltob` is +13.04%** — same recommendation, different magnitude and a *different mechanism*
+(see below).
+
+| arm | mirrored | | arm | mirrored |
 |---|---|---|---|---|
-| base | +0.00% | +0.00% | — | 0.00% |
-| pgo | +5.94% | +5.85% | **+5.89%** | 0.10% |
-| pgolto | +8.41% | +8.44% | **+8.43%** | 0.03% |
-| pgoltob | +11.36% | +11.35% | **+11.35%** | 0.01% |
-| pgob | +6.70% | +6.64% | **+6.67%** | 0.06% |
-| afdo | +6.96% | +6.87% | **+6.91%** | 0.09% |
-| afdolto | +9.16% | +9.19% | **+9.17%** | 0.03% |
-| **afdoltob** | +13.27% | +12.80% | **+13.04%** | 0.47% |
-| afdob | +10.97% | +11.05% | **+11.01%** | 0.08% |
+| pgo | +5.89% | | afdo | +6.91% |
+| pgolto | +8.43% | | afdolto | +9.17% |
+| pgoltob | +11.35% | | **afdoltob** | **+13.04%** |
+| pgob | +6.67% | | afdob | +11.01% |
 
 Geometric mean across 16 benchmarks, speedup vs `base`. "fwd"/"rev" are forward and reverse
 arm-ordering passes; "spread" is their disagreement, i.e. the practical uncertainty. No benchmark
-regresses in any arm, and worst-case baseline noise was 1.8%.
+regresses in any arm of either campaign.
+
+## The same optimisation wins by two different mechanisms
+
+| | 3.4.11 interpreter | 4.0.6 + YJIT |
+|---|---|---|
+| afdoltob geomean | +13.04% | **+20.42%** |
+| I-cache stalls (% cycles) | 11.71% → 6.40% (**−45%**) | 14.53% → 15.23% (unmoved) |
+| front-end bound | 38.83% → 32.52% (**−6.31 pp**) | 51.51% → 52.17% (unmoved) |
+| instructions retired | −1.83% | **−8.85%** |
+| `vm_exec_core` share of cycles | **31.9%** | **0.84%** |
+
+In interpreter mode FDO wins by fixing the layout of the bytecode dispatch loop. **Under YJIT that
+loop is gone** — replaced by JIT-generated machine code that gcc never sees, and which pushes the
+baseline from 38.8% to 51.5% front-end bound. FDO cannot touch that at all. Instead it wins by
+retiring ~9% fewer C-side instructions through inlining and specialisation of the runtime (GC,
+allocation, method lookup, C functions).
+
+**Important:** the +13.04% → +20.42% difference is **not attributable to YJIT alone.** Four things
+changed between campaigns — Ruby version, YJIT, training iteration count (1+2 → 3+5), and
+ruby-bench revision. The clean attribution experiment (same 4.0.6 binaries measured without
+`--yjit`) has not been run.
 
 ## Three findings
 
@@ -83,6 +128,7 @@ call frames and so stack push/pop traffic — the optimisation improves data-sid
 
 | | |
 |---|---|
+| Ruby | **4.0.6** (primary campaign) / 3.4.11 (secondary) |
 | Box | AWS **m6i.metal** — 2S Intel Xeon Platinum 8375C @2.9 GHz (Ice Lake-SP, family 6 model 106), 32c/64t per socket, **128 vCPU**, 2 NUMA nodes, 503 GiB |
 | Cache | L1i **32 KB/core** (shared between SMT siblings), L1d 48 KB/core, L2 1.25 MB/core, L3 54 MiB/socket |
 | OS | Ubuntu 26.04 LTS, kernel **7.0.0-1006-aws** at measurement |

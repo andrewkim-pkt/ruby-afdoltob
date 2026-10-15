@@ -123,6 +123,28 @@ rows.each do |a, f, r, m, spread|
          a, pct.(f), pct.(r), pct.(m), spread ? format('%.2f%%', spread) : '--', verdict
 end
 puts "-" * 100
+
+# The customer's benchmark of record gets its own table rather than being one row of sixteen.
+focus = ENV['FOCUS_BENCH'] || 'lobsters'
+if detail.key?(focus)
+  puts
+  puts "=" * 100
+  puts "FOCUS BENCHMARK: #{focus}  (reported separately at akim's request)"
+  puts "=" * 100
+  printf "%-10s %10s %10s %12s %10s\n", 'arm', 'fwd', 'rev', 'MIRRORED', 'ms'
+  puts "-" * 60
+  arms.each do |a|
+    h = detail[focus][a] or next
+    t = %w[fwd rev].map { |d| data[d].dig(focus, a) }.compact.map { |x| mean(x) }
+    pct = ->(x) { x ? format('%+.2f%%', (x - 1) * 100) : '--' }
+    printf "%-10s %10s %10s %12s %10s\n", a,
+           pct.(h['fwd']), pct.(h['rev']), pct.(h[:mir]),
+           t.empty? ? '--' : format('%.1f', mean(t) * 1000)
+  end
+  puts "-" * 60
+end
+
+puts
 puts "Speedup vs #{base_arm}; geometric mean across benchmarks. + = faster."
 puts "MIRRORED = geomean of the forward and reverse passes. 'spread' = |fwd - rev|, the"
 puts "disagreement between the two orderings and the practical uncertainty on each figure."

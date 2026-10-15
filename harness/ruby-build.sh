@@ -80,7 +80,7 @@ configure_and_make() {  # $1 extra cflags, $2 extra ldflags
 # first, unprofiled, and only then train or sample.
 prime() {
   echo "== priming gems for $ARM (unprofiled)"
-  env ARM="$ARM" RUBY_BIN="$PFX/bin/ruby" YJIT_BENCH="$YJIT_BENCH" \
+  env ARM="$ARM" RUBY_BIN="$PFX/bin/ruby" YJIT_BENCH="$YJIT_BENCH" RUBY_FLAGS="$RUBY_FLAGS" \
       HL_TRAIN_WARMUP=0 HL_TRAIN_BENCH=1 \
       bash -c "$TRAIN_CMD" >"$REMOTE_ROOT/log/prime-$ARM.log" 2>&1 \
     || { echo "  prime failed, see log/prime-$ARM.log" >&2; return 1; }
@@ -89,7 +89,7 @@ prime() {
 train() {
   ruby_env_check || { echo "cannot train without a workload" >&2; exit 3; }
   echo "== training $ARM"
-  env ARM="$ARM" RUBY_BIN="$PFX/bin/ruby" YJIT_BENCH="$YJIT_BENCH" \
+  env ARM="$ARM" RUBY_BIN="$PFX/bin/ruby" YJIT_BENCH="$YJIT_BENCH" RUBY_FLAGS="$RUBY_FLAGS" \
       HL_TRAIN_WARMUP="$HL_TRAIN_WARMUP" HL_TRAIN_BENCH="$HL_TRAIN_BENCH" \
       bash -c "$TRAIN_CMD"
 }
@@ -131,7 +131,7 @@ case "$mode" in
     # -b (LBR) is what create_gcov wants for branch counts; staging confirmed LBR works on this
     # m6i.metal. --per-thread/-a are deliberately avoided: the harness pins ruby to one core, so
     # a plain child-following record already captures everything that matters.
-    env ARM="$ARM" RUBY_BIN="$PFX/bin/ruby" YJIT_BENCH="$YJIT_BENCH" \
+    env ARM="$ARM" RUBY_BIN="$PFX/bin/ruby" YJIT_BENCH="$YJIT_BENCH" RUBY_FLAGS="$RUBY_FLAGS" \
         HL_TRAIN_WARMUP="$HL_TRAIN_WARMUP" HL_TRAIN_BENCH="$HL_TRAIN_BENCH" \
         perf record -o "$train_perf" -e cycles:u -b -- bash -c "$TRAIN_CMD"
     # NOTE: create_gcov must match the gcc gcov version. The MariaDB campaign needed a patch to
@@ -153,7 +153,7 @@ if [ "$needs_bolt" = 1 ]; then
   cp "$PFX/bin/ruby" "$PFX/bin/ruby.prebolt"
   echo "== bolt sampling $ARM"
   prime
-  env ARM="$ARM" RUBY_BIN="$PFX/bin/ruby" YJIT_BENCH="$YJIT_BENCH" \
+  env ARM="$ARM" RUBY_BIN="$PFX/bin/ruby" YJIT_BENCH="$YJIT_BENCH" RUBY_FLAGS="$RUBY_FLAGS" \
       HL_TRAIN_WARMUP="$HL_TRAIN_WARMUP" HL_TRAIN_BENCH="$HL_TRAIN_BENCH" \
       perf record -o "$PROF/bolt.data" -e cycles:u -j any,u -- bash -c "$TRAIN_CMD"
   perf2bolt -p "$PROF/bolt.data" -o "$PROF/bolt.fdata" "$PFX/bin/ruby.prebolt"

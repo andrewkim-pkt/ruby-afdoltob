@@ -1,0 +1,11 @@
+arm=afdob
+ruby=4.0.6
+gcc=15.2.0
+cflags=-O3 -march=native -mtune=native -fno-omit-frame-pointer -g
+ldflags= -Wl,--emit-relocs -Wl,-q
+final_cflags=-O3 -march=native -mtune=native -fno-omit-frame-pointer -g -fauto-profile=/home/ubuntu/ruby-fdo/prof/afdob/ruby.gcov -Wno-missing-profile
+final_ldflags= -Wl,--emit-relocs -Wl,-q 
+bolt=1 lto=0 mode=afdo
+md5=54d53a39a33c3230439a73ab882c42c0
+built=2026-10-14T19:50:05Z
+host=<DUT_HOSTNAME>

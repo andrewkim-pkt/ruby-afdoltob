@@ -1,0 +1,11 @@
+arm=pgob
+ruby=4.0.6
+gcc=15.2.0
+cflags=-O3 -march=native -mtune=native -fno-omit-frame-pointer -g
+ldflags= -Wl,--emit-relocs -Wl,-q
+final_cflags=-O3 -march=native -mtune=native -fno-omit-frame-pointer -g -fprofile-use -fprofile-dir=/home/ubuntu/ruby-fdo/prof/pgob -fprofile-correction -Wno-missing-profile -Wno-error=coverage-mismatch -Wno-coverage-mismatch
+final_ldflags= -Wl,--emit-relocs -Wl,-q 
+bolt=1 lto=0 mode=pgo
+md5=c327187d087ed0a04af76dff6bb523d5
+built=2026-10-14T19:16:46Z
+host=<DUT_HOSTNAME>

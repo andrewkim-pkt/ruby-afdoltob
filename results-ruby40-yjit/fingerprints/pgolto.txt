@@ -1,0 +1,11 @@
+arm=pgolto
+ruby=4.0.6
+gcc=15.2.0
+cflags=-O3 -march=native -mtune=native -fno-omit-frame-pointer -g -flto=32 -ffat-lto-objects
+ldflags= -flto=32 -ffat-lto-objects
+final_cflags=-O3 -march=native -mtune=native -fno-omit-frame-pointer -g -flto=32 -ffat-lto-objects -fprofile-use -fprofile-dir=/home/ubuntu/ruby-fdo/prof/pgolto -fprofile-correction -Wno-missing-profile -Wno-error=coverage-mismatch -Wno-coverage-mismatch
+final_ldflags= -flto=32 -ffat-lto-objects 
+bolt=0 lto=1 mode=pgo
+md5=a9c80cfb29d6462e32b8e5ac200c3ff1
+built=2026-10-14T18:57:39Z
+host=<DUT_HOSTNAME>

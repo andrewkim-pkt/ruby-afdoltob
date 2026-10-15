@@ -1,0 +1,189 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 3M of event 'cpu/cycles/P'
+# Event count (approx.): 11288436616028
+#
+# Overhead  Command          Shared Object                          Symbol                                                                                                             
+# ........  ...............  .....................................  ...................................................................................................................
+#
+     4.20%  ruby             sqlite3_native.so                      [.] sqlite3VdbeExec
+            |          
+             --3.98%--sqlite3VdbeExec
+                       |          
+                        --3.98%--sqlite3_step
+
+     1.68%  ruby             ruby                                   [.] rb_wb_protected_newobj_of
+            |          
+             --1.39%--ractor_cache_allocate_slot (inlined)
+                       newobj_alloc (inlined)
+                       rb_gc_impl_new_obj (inlined)
+                       newobj_of (inlined)
+                       rb_wb_protected_newobj_of
+                       |          
+                        --0.42%--str_alloc_embed (inlined)
+
+     1.02%  ruby             ruby                                   [.] match_at
+            |          
+             --0.99%--match_at
+                       |          
+                        --0.97%--onig_search_gpos
+                                  onig_search
+                                  |          
+                                  |--0.53%--reg_onig_search (inlined)
+                                  |          rb_reg_onig_match (inlined)
+                                  |          rb_reg_match_p
+                                  |          |          
+                                  |           --0.41%--rb_reg_match_m_p
+                                  |          
+                                   --0.44%--rb_reg_onig_match (inlined)
+                                             rb_reg_search_set_match
+
+     0.95%  ruby             libc.so.6                              [.] malloc
+            |          
+             --0.93%--malloc
+
+     0.95%  ruby             sqlite3_native.so                      [.] btreeParseCellPtr
+            |          
+             --0.94%--btreeParseCellPtr
+
+     0.91%  ruby             sha2.so                                [.] rb_Digest_SHA256_Transform
+            |          
+             --0.82%--rb_Digest_SHA256_Transform
+                       |          
+                        --0.81%--rb_Digest_SHA256_Update
+                                  rb_Digest_SHA256_Update
+                                  rb_digest_base_update
+
+     0.87%  ruby             sha2.so                                [.] rb_Digest_SHA256_Transform
+            |          
+             --0.87%--rb_Digest_SHA256_Transform
+                       |          
+                        --0.87%--rb_Digest_SHA256_Update
+                                  rb_digest_base_update
+
+     0.85%  ruby             ruby                                   [.] rb_managed_id_table_lookup
+            |          
+             --0.43%--rb_id_table_lookup (inlined)
+                       rb_managed_id_table_lookup
+
+     0.84%  ruby             ruby                                   [.] vm_exec_core
+            |          
+             --0.42%--vm_exec_core
+                       |          
+                        --0.41%--vm_exec_loop (inlined)
+                                  rb_vm_exec
+
+     0.82%  ruby             ruby                                   [.] rb_vm_opt_send_without_block
+            |          
+             --0.49%--vm_sendish (inlined)
+                       rb_vm_opt_send_without_block
+
+     0.81%  ruby             ruby                                   [.] callable_method_entry_or_negative.lto_priv.0
+            |          
+             --0.81%--callable_method_entry_or_negative.lto_priv.0
+
+     0.77%  ruby             libc.so.6                              [.] malloc_usable_size
+            |          
+             --0.76%--malloc_usable_size
+
+     0.72%  ruby             ruby                                   [.] vm_call_iseq_setup
+            |          
+             --0.57%--vm_call_iseq_setup
+
+     0.72%  ruby             ruby                                   [.] callable_method_entry_or_negative
+            |          
+             --0.56%--callable_method_entry_or_negative
+                       |          
+                        --0.55%--callable_method_entry (inlined)
+
+     0.67%  ruby             ruby                                   [.] gc_sweep_step
+     0.67%  ruby             ruby                                   [.] vm_search_cc.lto_priv.0
+            |          
+             --0.67%--vm_search_cc.lto_priv.0
+                       |          
+                        --0.44%--rb_vm_opt_send_without_block
+
+     0.66%  ruby             ruby                                   [.] rb_vm_opt_send_without_block
+            |          
+             --0.64%--rb_vm_opt_send_without_block
+
+     0.63%  ruby             ruby                                   [.] vm_yield_setup_args
+     0.62%  ruby             ruby                                   [.] vm_exec_core.lto_priv.0
+            |          
+             --0.61%--vm_exec_core.lto_priv.0
+                       |          
+                        --0.61%--rb_vm_exec
+
+     0.61%  ruby             ruby                                   [.] match_at.lto_priv.0
+            |          
+             --0.58%--match_at.lto_priv.0
+                       |          
+                        --0.57%--onig_search_gpos
+
+     0.57%  ruby             ruby                                   [.] find_table_entry_ind
+     0.57%  ruby             sqlite3_native.so                      [.] sqlite3BtreeIndexMoveto
+            |          
+             --0.51%--sqlite3BtreeIndexMoveto
+
+     0.54%  ruby             ruby                                   [.] rb_vm_exec
+     0.53%  ruby             libc.so.6                              [.] cfree
+            |          
+             --0.49%--cfree
+
+     0.53%  ruby             ruby                                   [.] rb_funcallv_scope.constprop.0
+     0.52%  ruby             libc.so.6                              [.] 0x00000000000bab9c
+            |
+            ---0x7ffff7ababa0
+               |          
+                --0.43%--0x7ffff7abc1dd
+
+     0.52%  ruby             ruby                                   [.] gc_sweep_step
+            |          
+             --0.51%--gc_sweep_step
+                       |          
+                        --0.47%--gc_continue
+                                  newobj_cache_miss.lto_priv.0
+
+     0.51%  ruby             sqlite3_native.so                      [.] sqlite3VdbeRecordCompareWithSkip
+            |          
+             --0.48%--sqlite3VdbeRecordCompareWithSkip
+
+     0.51%  ruby             ruby                                   [.] vm_call_iseq_setup_normal_0start_0params_0locals
+     0.49%  ruby             ruby                                   [.] invoke_block_from_c_bh.lto_priv.0
+            |          
+             --0.48%--invoke_block_from_c_bh.lto_priv.0
+
+     0.48%  ruby             ruby                                   [.] vm_lookup_cc
+            |          
+             --0.45%--vm_lookup_cc
+
+     0.47%  ruby             ruby                                   [.] vm_call_iseq_setup.lto_priv.0
+            |          
+             --0.46%--vm_call_iseq_setup.lto_priv.0
+
+     0.46%  ruby             ruby                                   [.] vm_call0_body
+     0.46%  ruby             libc.so.6                              [.] 0x00000000000babbb
+            |          
+             --0.46%--0x7ffff7ababbf
+
+     0.46%  ruby             ruby                                   [.] rb_hash_aref
+            |          
+             --0.43%--rb_hash_aref
+
+     0.43%  ruby             libc.so.6                              [.] pthread_mutex_lock
+            |          
+             --0.42%--pthread_mutex_lock
+
+     0.41%  ruby             ruby                                   [.] vm_call_iseq_setup_normal_0start_0params_0locals.lto_priv.0
+            |          
+             --0.41%--vm_call_iseq_setup_normal_0start_0params_0locals.lto_priv.0
+
+     0.40%  ruby             sqlite3_native.so                      [.] pcache1Fetch
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#

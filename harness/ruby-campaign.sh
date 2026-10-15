@@ -52,6 +52,7 @@ done
   echo "cpu=$(lscpu|grep -m1 'Model name'|cut -d: -f2|xargs)  vcpu=$(nproc)"
   echo "gcc=$($CC -dumpfullversion)  ruby=$RUBY_VER"
   echo "workload=yjit-bench headline  warmup=$HL_WARMUP  bench=$HL_BENCH"
+  echo "ruby_flags=$RUBY_FLAGS   focus=$FOCUS_BENCH"
   echo "started=$(date -u +%FT%TZ)"
   echo "arms=${arms[*]}"
   for a in "${arms[@]}"; do
@@ -60,13 +61,15 @@ done
 } > "$OUT/MANIFEST"
 cat "$OUT/MANIFEST"
 
+# $RUBY_FLAGS (default --yjit) is appended to every arm's executable spec, because the customer
+# deploys with YJIT on. yjit-bench's -e NAME::PATH accepts trailing ruby options.
 eargs() {  # $1 = fwd|rev
   local -a e=()
   if [ "$1" = fwd ]; then
-    for a in "${arms[@]}"; do e+=(-e "$a::$REMOTE_ROOT/inst/ruby-$a/bin/ruby"); done
+    for a in "${arms[@]}"; do e+=(-e "$a::$REMOTE_ROOT/inst/ruby-$a/bin/ruby $RUBY_FLAGS"); done
   else
     for ((i=${#arms[@]}-1; i>=0; i--)); do
-      e+=(-e "${arms[i]}::$REMOTE_ROOT/inst/ruby-${arms[i]}/bin/ruby")
+      e+=(-e "${arms[i]}::$REMOTE_ROOT/inst/ruby-${arms[i]}/bin/ruby $RUBY_FLAGS")
     done
   fi
   printf '%s\n' "${e[@]}"

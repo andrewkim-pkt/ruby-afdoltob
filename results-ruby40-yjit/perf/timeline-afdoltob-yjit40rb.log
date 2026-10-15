@@ -1,0 +1,17 @@
+2026-10-15T01:02:07.623844565Z ===== arm=afdoltob bench=railsbench workers=128 window=30s gap=10s
+2026-10-15T01:02:07.694849820Z binary md5=cf4c273637b731c480862d36d7eb1c0f
+2026-10-15T01:02:07.822889559Z prep no_turbo=1 min_perf_pct=100 nmi_watchdog=0 paranoid=0
+2026-10-15T01:02:09.46259460Z copies ready (0 created, 128 total, 636K each, 535G free)
+2026-10-15T01:02:09.60314822Z smoke test: railsbench via benchmarks/railsbench-w000/benchmark.rb
+2026-10-15T01:02:19.378761228Z smoke OK: #1: 3954ms
+2026-10-15T01:02:21.971875044Z launched 128 workers for afdoltob (railsbench)
+2026-10-15T01:03:49.621045278Z gate: workers-in-loop=128/128  live=1  busy=100.0%
+2026-10-15T01:03:49.743167452Z gate PASS -- settling 60s before first window
+2026-10-15T01:04:49.857026236Z WINDOW stat  start
+2026-10-15T01:05:24.347056121Z WINDOW stat  end   -> stat-afdoltob-yjit40rb.txt
+2026-10-15T01:05:34.486066357Z WINDOW record start
+2026-10-15T01:11:19.366127303Z WINDOW record end   -> record-afdoltob-yjit40rb.data 1.3G
+2026-10-15T01:11:29.474997031Z WINDOW c2c   start
+2026-10-15T01:27:09.131060611Z WINDOW c2c   end   -> c2c-afdoltob-yjit40rb.data 2.4G
+2026-10-15T01:27:09.187124546Z ===== arm=afdoltob complete
+2026-10-15T01:27:14.45132399Z workers stopped

@@ -1,0 +1,12 @@
+afdob,ruby 4.0.6 (2026-07-14 revision 03b6d3f889) +YJIT +PRISM [x86_64-linux]
+afdoltob,ruby 4.0.6 (2026-07-14 revision 03b6d3f889) +YJIT +PRISM [x86_64-linux]
+afdolto,ruby 4.0.6 (2026-07-14 revision 03b6d3f889) +YJIT +PRISM [x86_64-linux]
+afdo,ruby 4.0.6 (2026-07-14 revision 03b6d3f889) +YJIT +PRISM [x86_64-linux]
+pgob,ruby 4.0.6 (2026-07-14 revision 03b6d3f889) +YJIT +PRISM [x86_64-linux]
+pgoltob,ruby 4.0.6 (2026-07-14 revision 03b6d3f889) +YJIT +PRISM [x86_64-linux]
+pgolto,ruby 4.0.6 (2026-07-14 revision 03b6d3f889) +YJIT +PRISM [x86_64-linux]
+pgo,ruby 4.0.6 (2026-07-14 revision 03b6d3f889) +YJIT +PRISM [x86_64-linux]
+base,ruby 4.0.6 (2026-07-14 revision 03b6d3f889) +YJIT +PRISM [x86_64-linux]
+
+bench,afdob (ms),afdoltob (ms),afdolto (ms),afdo (ms),pgob (ms),pgoltob (ms),pgolto (ms),pgo (ms),base (ms),afdoltob 1st itr,afdolto 1st itr,afdo 1st itr,pgob 1st itr,pgoltob 1st itr,pgolto 1st itr,pgo 1st itr,base 1st itr,afdob/afdoltob,p-value,sig,afdob/afdolto,p-value,sig,afdob/afdo,p-value,sig,afdob/pgob,p-value,sig,afdob/pgoltob,p-value,sig,afdob/pgolto,p-value,sig,afdob/pgo,p-value,sig,afdob/base,p-value,sig
+liquid-c,40.7 ± 7.9%,40.1 ± 9.6%,43.4 ± 7.0%,43.3 ± 5.9%,41.3 ± 4.9%,40.4 ± 6.8%,40.5 ± 2.5%,44.5 ± 6.4%,48.8 ± 5.1%,0.9568528078457488,0.902318389092429,0.9454133282100963,0.9780799739212008,1.0099047313934215,0.9610104996521588,0.9192480712271088,0.8927430067767411,1.015,0.751,"",0.938,0.132,"",0.941,0.121,"",0.985,0.680,"",1.008,0.841,"",1.004,0.903,"",0.915 (*),0.036,p < 0.05,0.835 (***),1.5e-04,p < 0.001

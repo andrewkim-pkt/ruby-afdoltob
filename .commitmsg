@@ -1,0 +1,38 @@
+Add Ruby 4.0.6 + YJIT campaign (the deployment configuration)
+
+Customer feedback: YJIT is enabled in production, the workload is
+ruby-bench headline, and of its 16 benchmarks lobsters matters most.
+Ruby moved to 4.0.6 and ruby-bench to HEAD (2c3e549 -> 13e09f7).
+
+All eight FDO arms retrained under --yjit: enabling YJIT needs no
+rebuild (rustc was present at configure time, --yjit is a runtime flag)
+but it invalidates interpreter-trained profiles, because the bytecode
+dispatch loop that dominated them disappears into JIT-generated code.
+
+Result (mirrored, 16 benchmarks, spread <=0.85%):
+  afdoltob +20.42% geomean, +13.77% on lobsters (715.7 -> 629.1 ms)
+  pgoltob  +17.60% geomean, +9.00% on lobsters
+Every arm positive on every benchmark.
+
+On lobsters the arm ordering differs from the geomean: LTO HURTS the PGO
+path (pgolto +3.92% worse than pgo +6.55%; pgob +9.71% beats pgoltob
++9.00%) while helping the AutoFDO path. afdoltob wins either way.
+
+The mechanism changes with YJIT. Interpreter mode won by fixing dispatch
+loop layout: I-cache stalls -45%, front-end bound -6.31 pp, instructions
+only -1.83%. Under YJIT both arms sit at ~51-52% front-end bound and FDO
+does not move it -- the front end is dominated by JIT code gcc never
+sees -- so the win comes from retiring 8.85% fewer C-side instructions.
+vm_exec_core falls from 31.9% of cycles to 0.84%.
+
+NOT attributable to YJIT alone: four variables moved between campaigns
+(Ruby version, YJIT, training iterations 1+2 -> 3+5, ruby-bench rev).
+The clean experiment, same binaries without --yjit, is not yet run.
+
+Also recorded: lobsters dies at 128-way concurrency in BOTH arms (base
+88 HTTP 500s, afdoltob 76) from an ActiveSupport FileStore ENOENT, so it
+is not a miscompilation; perf characterisation uses railsbench instead.
+
+Methodology: measurement warmup 5 -> 12 (YJIT compiles lazily), training
+1+2 -> 3+5 (JIT code is unsymbolised, so create_gcov and perf2bolt
+discard those samples). Host addresses scrubbed.

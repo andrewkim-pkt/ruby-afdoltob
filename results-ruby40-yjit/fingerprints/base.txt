@@ -1,0 +1,11 @@
+arm=base
+ruby=4.0.6
+gcc=15.2.0
+cflags=-O3 -march=native -mtune=native -fno-omit-frame-pointer -g
+ldflags=
+final_cflags=-O3 -march=native -mtune=native -fno-omit-frame-pointer -g 
+final_ldflags= 
+bolt=0 lto=0 mode=plain
+md5=c6f32808afea0726d9d04db50b50ff40
+built=2026-10-14T18:29:45Z
+host=<DUT_HOSTNAME>
