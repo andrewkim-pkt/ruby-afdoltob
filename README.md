@@ -199,7 +199,9 @@ Full per-option rationale, the PGO two-pass sequence, and the `configure` invoca
 ## Repository layout
 
 ```
-RUBY-FDO-REPORT.md          full report: system info, recipe, workload config, results, perf analysis
+WORKLOAD-AND-SYSTEM.md      Ruby 4.0.6 + YJIT: system info, Ruby/workload configs, benchmark summary
+RESULTS-RUBY40-YJIT.md      Ruby 4.0.6 + YJIT: full results + perf analysis (primary campaign)
+RUBY-FDO-REPORT.md          Ruby 3.4.11 interpreter: system info, recipe, workload config, results, perf
 RESULTS.md                  results only
 PERF.md                     perf analysis only
 BUILD-STEPS.md              build/profiling recipe only
