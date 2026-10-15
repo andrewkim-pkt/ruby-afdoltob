@@ -25,6 +25,12 @@ is the deployment configuration; the 3.4.11 interpreter campaign is kept for com
 
 Full detail, per-benchmark tables and perf analysis: **[RESULTS-RUBY40-YJIT.md](RESULTS-RUBY40-YJIT.md)**.
 
+**Prebuilt binary available:** [`binaries/ruby-4.0.6-afdoltob-icelake.tar.xz`](binaries/) — the
+exact `afdoltob` build that produced these numbers (`bin/ruby` md5 `cf4c273637b731c480862d36d7eb1c0f`,
+byte-identical, not a rebuild). It is **`-march=native` Ice Lake-only**, needs **`--yjit`** to be
+the measured configuration, and is **not relocatable** without setting `RUBYLIB`. Read
+[binaries/README.md](binaries/README.md) before using it.
+
 **Note for anyone whose own proxy is `lobsters`:** the arm ordering there differs from the geomean.
 LTO *hurts* the PGO path on lobsters (`pgolto` +3.92% is worse than plain `pgo` +6.55%, and `pgob`
 +9.71% beats `pgoltob` +9.00%), while it helps on the AutoFDO path. `afdoltob` wins either way,
