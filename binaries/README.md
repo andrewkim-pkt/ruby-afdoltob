@@ -1,4 +1,24 @@
-# Prebuilt `afdoltob` binary — Ruby 4.0.6, AutoFDO + LTO + BOLT, gcc 15.2.0
+# Prebuilt binaries and FDO profiles — Ruby 4.0.6, gcc 15.2.0
+
+| file | size | md5 |
+|---|---|---|
+| `ruby-4.0.6-afdoltob-icelake.tar.xz` | 11.3 MB | `98a6e2101d995760488d0182c3eba22b` |
+| `ruby-4.0.6-base-icelake.tar.xz` | 21.1 MB | `4a2cffa2e6794bda2de435ae0337d187` |
+| `ruby-4.0.6-fdo-profiles.tar.xz` | 3.2 MB | `6c16dad0bf88c15ce01c6191e463f115` |
+
+* **afdoltob** — the winning arm. Everything below applies to it.
+* **base** — the `-O3 -march=native` baseline, so the published **+20.42% / +13.77%** comparison can
+  be reproduced rather than taken on faith. `bin/ruby` md5 `c6f32808afea0726d9d04db50b50ff40`,
+  matching the campaign MANIFEST. Same install rules and same Ice Lake restriction as afdoltob.
+  Larger than afdoltob because BOLT strips debug sections and base keeps them.
+* **fdo-profiles** — the collected AutoFDO `ruby.gcov`, BOLT `.fdata` and PGO `.gcda` for all eight
+  FDO arms (41 MB raw). These let an arm be **rebuilt without re-running training**, which is
+  otherwise a multi-hour step. Saved deliberately: an earlier PostgreSQL campaign lost its PGO
+  `.gcda` with the build box, after which no new PGO arm could ever share that profile again.
+  Pair them with the matching `-fprofile-use -fprofile-dir=` / `-fauto-profile=` /
+  `perf2bolt`-less `llvm-bolt -data=` invocations in [../BUILD-STEPS.md](../BUILD-STEPS.md).
+
+## The afdoltob binary
 
 `ruby-4.0.6-afdoltob-icelake.tar.xz` — 11.3 MB, md5 **`98a6e2101d995760488d0182c3eba22b`**
 
