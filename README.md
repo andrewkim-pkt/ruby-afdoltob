@@ -95,7 +95,37 @@ rather than requiring an instrumented build, so it is cheaper too.
 
 ## Why — confirmed by hardware counters, not inferred
 
-128 parallel railsbench workers, frequency pinned, three non-overlapping 30 s windows, mirrored:
+Both tables: 128 parallel workers, frequency pinned (`cycles/ref-cycles = 1.0000`), three
+non-overlapping 30 s windows. **Read them as two separate campaigns** — the mechanism differs, and
+mixing the two sets of numbers is the easiest mistake to make here.
+
+### Primary — Ruby 4.0.6 + YJIT (railsbench, both arms gated 128/128)
+
+| metric | base | afdoltob | change |
+|---|---|---|---|
+| **instructions** | **7.724e12** | **7.040e12** | **−8.85%** |
+| **branches** | 1.411e12 | 1.286e12 | **−8.88%** |
+| topdown-fe-bound | 51.51% | 52.17% | +0.66 pp (unmoved) |
+| icache_64b.iftag_stall (% of cycles) | 14.53% | 15.23% | +0.70 pp (unmoved) |
+| icache_64b.iftag_miss | 379.2e9 | 369.5e9 | −2.56% |
+| idq_uops_not_delivered.core | 14.732e12 | 14.875e12 | +0.97% |
+| itlb_misses.walk_pending | 345.4e9 | 371.7e9 | +7.59% |
+| l2_rqsts.code_rd_miss | 77.66e9 | 78.62e9 | +1.24% |
+| topdown-be-bound | 14.95% | 16.26% | +1.31 pp |
+| topdown-retiring | 26.23% | 23.92% | −2.31 pp |
+| branch-misses | 38.57e9 | 39.05e9 | +1.26% |
+| branch miss rate | 2.73% | 3.04% | +0.31 pp |
+| IPC | 0.678 | 0.620 | −8.54% |
+
+**Under YJIT this is an instruction-count win, not a front-end win.** Both arms sit at ~51–52%
+front-end bound and FDO does not move it, because that starvation comes from JIT-generated code
+gcc never sees. The gain is ~9% fewer C-side instructions from inlining and specialising the
+runtime. `vm_exec_core` is only **0.84%** of cycles here.
+
+Note **IPC falls 8.5% while the arm is faster** — these are fixed 30 s windows on a saturated box,
+so cycles are constant by construction and IPC is not a proxy for speed.
+
+### Secondary — Ruby 3.4.11, interpreter mode (railsbench, mirrored mean of two passes)
 
 | metric | base | afdoltob | change |
 |---|---|---|---|
@@ -106,14 +136,17 @@ rather than requiring an instrumented build, so it is cheaper too.
 | itlb_misses.walk_pending | 155.0e9 | 139.1e9 | −10.3% |
 | l2_rqsts.code_rd_miss | 24.26e9 | 22.11e9 | −8.9% |
 | instructions | 5.2241e12 | 5.1283e12 | −1.83% |
-| back-end bound | 29.19% | 34.32% | +5.13 pp |
+| topdown-be-bound | 29.19% | 34.33% | +5.14 pp |
 | branch-misses | 50.44e9 | 53.84e9 | +6.72% |
 
-It is a **front-end / code-layout win**. The 6.31 pp front-end change is ~6× the worst
+Here it **is** a front-end / code-layout win. The 6.31 pp front-end change is ~6× the worst
 pass-to-pass spread. Seven of base's top-15 functions are *inlined away* in `afdoltob`
 (`rb_wb_protected_newobj_of`, `rb_id_table_lookup`, `rb_call0`, `find_table_entry_ind`,
 `callable_method_entry_or_negative`, `vm_yield_setup_args`, `vm_sendish`), which is what produces
-the −1.83% instructions and −4.24% branches.
+the −1.83% instructions and −4.24% branches. `vm_exec_core` is **31.9%** of cycles.
+
+Every figure in both tables is recomputable from the raw `perf stat` output committed under
+`results-ruby40-yjit/perf/` and `results/perf/`.
 
 Two results that need care:
 
